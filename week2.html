@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APT Reconnaissance: Human vs AI Agent</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%);
+            color: #fff;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #00d9ff;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            color: #a0a0c0;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .panel {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .panel-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .panel-header h2 {
+            font-size: 1.8em;
+            margin-left: 15px;
+        }
+        
+        .human .panel-header h2 {
+            color: #ff6b6b;
+        }
+        
+        .ai .panel-header h2 {
+            color: #00ff88;
+        }
+        
+        .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+        }
+        
+        .human .icon {
+            background: rgba(255, 107, 107, 0.2);
+        }
+        
+        .ai .icon {
+            background: rgba(0, 255, 136, 0.2);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .stat-box {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            color: #a0a0c0;
+            margin-bottom: 8px;
+        }
+        
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        
+        .human .stat-value {
+            color: #ff6b6b;
+        }
+        
+        .ai .stat-value {
+            color: #00ff88;
+        }
+        
+        .activity-log {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            height: 300px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+        }
+        
+        .activity-log::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .activity-log::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        
+        .activity-log::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+        
+        .log-entry {
+            padding: 8px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .log-entry.scanning {
+            background: rgba(255, 255, 255, 0.05);
+            color: #00d9ff;
+        }
+        
+        .log-entry.found {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+        }
+        
+        .log-entry.vulnerable {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+        }
+        
+        .controls {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .btn-start {
+            background: linear-gradient(135deg, #00ff88 0%, #00d9ff 100%);
+            color: #1e1e2e;
+        }
+        
+        .btn-start:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.4);
+        }
+        
+        .btn-start:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn-reset {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        
+        .btn-reset:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .comparison {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 25px;
+            background: rgba(0, 217, 255, 0.1);
+            border-radius: 15px;
+            border: 2px solid rgba(0, 217, 255, 0.3);
+            text-align: center;
+            display: none;
+        }
+        
+        .comparison.show {
+            display: block;
+            animation: slideUp 0.5s;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .comparison h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #00d9ff;
+        }
+        
+        .comparison p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>APT Reconnaissance Race</h1>
+        <p>Energy Sector Network Vulnerability Assessment: Human Analyst vs AI Agent</p>
+    </div>
+    
+    <div class="container">
+        <div class="panel human">
+            <div class="panel-header">
+                <div class="icon">👤</div>
+                <h2>Human Analyst</h2>
+            </div>
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-label">Systems Scanned</div>
+                    <div class="stat-value" id="humanScanned">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Vulnerabilities Found</div>
+                    <div class="stat-value" id="humanVulns">0</div>
+                </div>
+                <div class="stat-box" style="grid-column: span 2;">
+                    <div class="stat-label">Time Elapsed</div>
+                    <div class="stat-value" id="humanTime">0:00</div>
+                </div>
+            </div>
+            <div class="activity-log" id="humanLog"></div>
+        </div>
+        
+        <div class="panel ai">
+            <div class="panel-header">
+                <div class="icon">🤖</div>
+                <h2>AI Agent</h2>
+            </div>
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-label">Systems Scanned</div>
+                    <div class="stat-value" id="aiScanned">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Vulnerabilities Found</div>
+                    <div class="stat-value" id="aiVulns">0</div>
+                </div>
+                <div class="stat-box" style="grid-column: span 2;">
+                    <div class="stat-label">Time Elapsed</div>
+                    <div class="stat-value" id="aiTime">0:00</div>
+                </div>
+            </div>
+            <div class="activity-log" id="aiLog"></div>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <button class="btn btn-start" id="startBtn" onclick="startSimulation()">Start Reconnaissance</button>
+        <button class="btn btn-reset" onclick="resetSimulation()">Reset</button>
+    </div>
+    
+    <div class="comparison" id="comparison">
+        <h3>Analysis Complete</h3>
+        <p id="comparisonText"></p>
+    </div>
+
+    <script>
+        const systems = [
+            { ip: '10.0.1.15', type: 'SCADA Primary Controller', vuln: true },
+            { ip: '10.0.1.23', type: 'Grid Management System', vuln: false },
+            { ip: '10.0.1.47', type: 'Power Distribution API', vuln: true },
+            { ip: '10.0.2.8', type: 'Smart Meter Gateway', vuln: true },
+            { ip: '10.0.2.19', type: 'Energy Trading Platform', vuln: false },
+            { ip: '10.0.2.31', type: 'Load Balancer', vuln: true },
+            { ip: '10.0.3.12', type: 'Substation Controller', vuln: true },
+            { ip: '10.0.3.28', type: 'OT Network Bridge', vuln: true },
+            { ip: '10.0.3.45', type: 'Vendor Portal', vuln: true },
+            { ip: '10.0.4.7', type: 'Backup Server', vuln: false },
+            { ip: '10.0.4.22', type: 'Remote Access Gateway', vuln: true },
+            { ip: '10.0.4.39', type: 'Monitoring Dashboard', vuln: false },
+            { ip: '10.0.5.11', type: 'Turbine Control System', vuln: true },
+            { ip: '10.0.5.26', type: 'Emergency Shutdown System', vuln: false },
+            { ip: '10.0.5.41', type: 'Data Historian', vuln: true }
+        ];
+        
+        let humanIndex = 0;
+        let aiIndex = 0;
+        let humanVulnCount = 0;
+        let aiVulnCount = 0;
+        let humanStartTime = 0;
+        let aiStartTime = 0;
+        let humanInterval, aiInterval, humanTimeInterval, aiTimeInterval;
+        let running = false;
+        
+        function addLog(element, message, type) {
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            entry.textContent = message;
+            element.insertBefore(entry, element.firstChild);
+        }
+        
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        function updateTimer(element, startTime) {
+            const elapsed = Math.floor((Date.now() - startTime) / 1000);
+            element.textContent = formatTime(elapsed);
+        }
+        
+        function humanScan() {
+            if (humanIndex >= systems.length) {
+                clearInterval(humanInterval);
+                clearInterval(humanTimeInterval);
+                checkCompletion();
+                return;
+            }
+            
+            const system = systems[humanIndex];
+            const humanLog = document.getElementById('humanLog');
+            
+            addLog(humanLog, `[${new Date().toLocaleTimeString()}] Scanning ${system.ip}...`, 'scanning');
+            
+            setTimeout(() => {
+                addLog(humanLog, `└─ Identified: ${system.type}`, 'scanning');
+                
+                if (system.vuln) {
+                    setTimeout(() => {
+                        addLog(humanLog, `└─ ⚠️ VULNERABILITY DETECTED`, 'found');
+                        humanVulnCount++;
+                        document.getElementById('humanVulns').textContent = humanVulnCount;
+                    }, 1000);
+                }
+            }, 500);
+            
+            humanIndex++;
+            document.getElementById('humanScanned').textContent = humanIndex;
+        }
+        
+        function aiScan() {
+            if (aiIndex >= systems.length) {
+                clearInterval(aiInterval);
+                clearInterval(aiTimeInterval);
+                checkCompletion();
+                return;
+            }
+            
+            const batchSize = Math.min(3, systems.length - aiIndex);
+            const aiLog = document.getElementById('aiLog');
+            
+            for (let i = 0; i < batchSize; i++) {
+                const system = systems[aiIndex + i];
+                
+                addLog(aiLog, `[${new Date().toLocaleTimeString()}] Parallel scan: ${system.ip} | ${system.type}`, 'scanning');
+                
+                if (system.vuln) {
+                    setTimeout(() => {
+                        addLog(aiLog, `└─ ⚠️ Vulnerability mapped: ${system.ip}`, 'vulnerable');
+                        aiVulnCount++;
+                        document.getElementById('aiVulns').textContent = aiVulnCount;
+                    }, 100);
+                }
+            }
+            
+            aiIndex += batchSize;
+            document.getElementById('aiScanned').textContent = aiIndex;
+        }
+        
+        function checkCompletion() {
+            if (humanIndex >= systems.length && aiIndex >= systems.length) {
+                running = false;
+                document.getElementById('startBtn').disabled = false;
+                
+                const humanTime = Math.floor((Date.now() - humanStartTime) / 1000);
+                const aiTime = Math.floor((Date.now() - aiStartTime) / 1000);
+                const speedup = (humanTime / aiTime).toFixed(1);
+                
+                const comparison = document.getElementById('comparison');
+                const comparisonText = document.getElementById('comparisonText');
+                comparisonText.innerHTML = `
+                    <strong>AI Agent completed reconnaissance ${speedup}x faster than human analyst.</strong><br><br>
+                    Human: ${humanVulnCount} vulnerabilities in ${formatTime(humanTime)}<br>
+                    AI: ${aiVulnCount} vulnerabilities in ${formatTime(aiTime)}<br><br>
+                    This demonstrates how AI automation makes Advanced Persistent Threat capabilities 
+                    accessible beyond traditional nation-state resources.
+                `;
+                comparison.classList.add('show');
+            }
+        }
+        
+        function startSimulation() {
+            if (running) return;
+            
+            running = true;
+            document.getElementById('startBtn').disabled = true;
+            document.getElementById('comparison').classList.remove('show');
+            
+            humanStartTime = Date.now();
+            aiStartTime = Date.now();
+            
+            humanInterval = setInterval(humanScan, 3000);
+            aiInterval = setInterval(aiScan, 800);
+            
+            humanTimeInterval = setInterval(() => {
+                updateTimer(document.getElementById('humanTime'), humanStartTime);
+            }, 1000);
+            
+            aiTimeInterval = setInterval(() => {
+                updateTimer(document.getElementById('aiTime'), aiStartTime);
+            }, 1000);
+        }
+        
+        function resetSimulation() {
+            clearInterval(humanInterval);
+            clearInterval(aiInterval);
+            clearInterval(humanTimeInterval);
+            clearInterval(aiTimeInterval);
+            
+            humanIndex = 0;
+            aiIndex = 0;
+            humanVulnCount = 0;
+            aiVulnCount = 0;
+            running = false;
+            
+            document.getElementById('humanScanned').textContent = '0';
+            document.getElementById('humanVulns').textContent = '0';
+            document.getElementById('humanTime').textContent = '0:00';
+            document.getElementById('aiScanned').textContent = '0';
+            document.getElementById('aiVulns').textContent = '0';
+            document.getElementById('aiTime').textContent = '0:00';
+            
+            document.getElementById('humanLog').innerHTML = '';
+            document.getElementById('aiLog').innerHTML = '';
+            document.getElementById('comparison').classList.remove('show');
+            document.getElementById('startBtn').disabled = false;
+        }
+    </script>
+</body>
+</html>
