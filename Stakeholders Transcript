@@ -1,0 +1,75 @@
+Frecesca Meixuan Wang - all my transcript is normalized and summarized by chatgpt and recording by otter
+Stakeholder Interview Transcript #1
+Name: Anonymous Cybersecurity Analyst, Puget Sound Energy (PSE)
+Date: October 7, 2025
+Location: Microsoft Teams Call (30 minutes, anonymized per company policy)
+Interviewer: Frecesca (Meixuan) Wang
+Frecesca: Thank you for agreeing to speak with me. We’re studying how AI agents could influence cybersecurity in the energy sector, especially around APT reconnaissance and human-in-the-loop decision-making. Could you start by describing your role at PSE?
+Analyst: I’m part of the cyber defense team for PSE’s IT and OT networks. We monitor both corporate systems and the control networks that manage generation and distribution assets. My focus is on threat detection and incident response for critical infrastructure.
+Frecesca: That’s exactly what we’re researching. What’s the most pressing challenge you face in protecting these systems?
+Analyst: The biggest problem is the visibility gap between IT and OT. Our IT tools can flag anomalies in minutes, but in OT, we sometimes don’t realize something’s wrong until equipment behaves strangely or operators notice unusual output. That delay gives attackers time to stay hidden.
+Frecesca: So AI could potentially help bridge that gap?
+Analyst: Yes, if used carefully. An AI agent can process SCADA logs and sensor data faster than humans, spotting small deviations we might miss. But you have to control how much autonomy it has. If you let it act without oversight, it might misinterpret routine maintenance as a cyber attack and trigger unnecessary shutdowns.
+Frecesca: That ties directly to our Human-in-the-Loop design. From your perspective, what kind of actions should require human approval?
+Analyst: Anything that changes a system state — shutting down a grid segment, resetting a PLC, revoking a user account. The AI can recommend these actions, but humans should approve them. For detection and triage, AI is great. For execution, humans are mandatory.
+Frecesca: Interesting. Do you think AI could also help attackers if used the other way around?
+Analyst: Unfortunately, yes. An AI APT agent could move slowly through systems, probing a few devices per day to blend in with normal traffic. It could also analyze staff behavior from LinkedIn and craft personalized phishing emails. If you combine that with stolen vendor credentials, it’s very hard to detect until damage is done.
+Frecesca: That’s actually the kind of scenario our team is simulating. Do you think smaller utilities face bigger risks from that type of attack?
+Analyst: Absolutely. Smaller municipal utilities often don’t have dedicated cyber teams. They depend on third-party vendors for remote maintenance, and those VPN connections are weak spots. One compromised vendor account can open doors to several clients at once.
+Frecesca: From your experience, how do people in the industry feel about AI-based defensive tools?
+Analyst: We see potential, but trust is still low. Everyone’s heard of false alarms and “AI fatigue.” We need transparent systems — something like what you’re doing with HIL and approval logs — before people will fully adopt it. Explainability is key.
+Frecesca: One last question. If you could give one piece of advice to researchers like us working on AI in critical infrastructure, what would it be?
+Analyst: Remember that energy systems aren’t just computers; they’re physical machines with real-world impact. Any mistake can hurt people or disrupt essential services. Keep humans involved and log everything. When in doubt, pause the AI. Sometimes the best defense is simply waiting ten seconds for a person to double-check.
+Frecesca: That’s great advice. Thank you again for your time and for sharing such practical insights.
+Analyst: My pleasure. Good luck with your project — it sounds like you’re asking the right questions.
+
+Stakeholder Interview Transcript #2
+Name: Alex Reynolds
+Title: AI Security Consultant, GridGuardian Inc.
+Date: October 13, 2025
+Location: Zoom Interview (Recorded with consent)
+Interviewer: Frecesca (Meixuan) Wang
+Frecesca: Thanks so much for taking the time to talk with me, Alex. Our team is studying how AI agents could be used in advanced persistent threat (APT) scenarios targeting the energy sector. Could you start by describing your background and what kind of work you do at GridGuardian?
+Alex: Sure. I’m an AI security consultant specializing in automation and critical infrastructure defense. At GridGuardian, we advise utility companies and regional grid operators on how to integrate AI into their cyber operations without losing control or visibility. I’ve worked on projects where AI systems handle real-time network scanning, but human reviewers still approve any remedial actions.
+Frecesca: That’s really relevant to our Human-in-the-Loop model. In your view, what’s the biggest risk of deploying an autonomous AI reconnaissance agent?
+Alex: The danger is predictability and stability. If an AI scans too aggressively or too often, it can overload control systems or trigger false alarms on a live grid. The real risk is operational — you can knock something offline by accident. So we measure AI effectiveness along three axes: detection speed, precision versus false-positive rate, and operational risk. Speed matters only if the AI remains stable and explainable.
+Frecesca: That’s interesting. Our team also noticed that AI agents sometimes hallucinate threat patterns. How do you balance speed and precision in real deployments?
+Alex: We usually set thresholds. For example, an AI can flag an anomaly in five seconds, but it cannot label it a “vulnerability” until a human verifies the context. You can automate data collection, but decision-making must stay human. It’s not about trusting AI blindly; it’s about trust with boundaries.
+Frecesca: So in a case where AI is used for APT-style reconnaissance, how would you expect an organization to respond?
+Alex: Ideally, they’d mirror the same AI capabilities on defense. If an attacker uses AI for scanning, the defender should use AI for early pattern recognition. But again, humans need to stay in the loop to interpret context — like when is something actually malicious versus routine maintenance. Automation without human review creates a false sense of security.
+Frecesca: What about transparency? How much do operators need to understand the AI’s process?
+Alex: A lot. If you can’t explain why an AI decided something was a threat, it’s unusable in critical infrastructure. Utility executives and regulators don’t want black boxes. Explainability is as important as accuracy in our industry. That’s why your HIL model is smart — it creates accountability checkpoints before execution.
+Frecesca: In your experience, are companies open to agentic AI systems, or are they still hesitant?
+Alex: They’re curious but cautious. Everyone wants speed and coverage, but no one wants to be the first to cause a blackout with AI. Most clients I work with run AI in supervised modes — 24/7 monitoring but human-approved actions. It’s like training a junior analyst who never sleeps.
+Frecesca: That analogy makes a lot of sense. One last question: if you had to summarize your advice for teams like ours designing AI attack simulations, what would you say?
+Alex: Keep the AI honest. Always pair your agents with human validators, log everything, and focus on learning from edge cases. The goal isn’t to show how dangerous AI can be, but to understand where it crosses the line from useful automation to reckless autonomy.
+Frecesca: That’s a great way to frame it. Thanks so much for your time and insight, Alex.
+Alex: Anytime — and good luck with the project.
+
+Vidhya Narayanan‘s transcript with stakeholder
+
+Conversation with USCG Officer:
+
+Vidhya: Good Afternoon sir, I hope your day is going well.
+Officer: Of course! Yours as well. Your RO (recruiting officer) told me you had some questions about cyber attacks?
+Vidhya: Yes, I am doing a project on cyber attacks on the energy sector. I know you guys don’t directly work with energy most of the time, but is there any insight you have for me about that? Any vulnerabilities you guys try to look out for?
+Officer: Yeah, you know you wouldn’t expect it but we do have…a decent amount of involvement with energy…usually working with contractors from the private sector, but also our own resources like oil and electricity rigs for our cutters (large vessels) up in the North Seas. 
+Vidhya: that’s pretty cool! So I’m guessing that’s a pretty, I guess juicy target for cybercriminals right? 
+Officer: For sure: but if we are talking oil rigs in specific, those are usually more suspect to physical attacks, which although related to the energy sector, aren’t exactly the most “cyber.” We do, however, have a lot of data streams in our day to day missions, I’m sure you were taught about those at boot camp.
+Vidhya: I never really thought about that, could you name a few key ones?
+Officer: Well first off we have directional information from our ships and boats that are all sent to command centers on shore: both of these entities work together to make sure that the boats are ultimately, you know, safe. Then we have signals from aircrafts and SAR beacons. I mean imagine you are a drug trafficker or something right? Those helicopters and fixed wing planes patrolling down by Florida are going to have tracking information about you and your boats, so as a criminal, you’re going to consider how you could interrupt the radio signals from those planes to command centers so that the personnel don’t know what to do.
+Vidhya: Yeah, I see what you are saying, sir. I know you probably can’t talk about specifics too much, but what would you say are some vulnerabilities that cause the USCG to be a little more vulnerable than ideal to cyber attacks?
+Officer: Well I mean, the ideal amount of vulnerability is zero. I guess, okay, I’ll say this. Not just for the Coast Guard, but any organization with hierarchical power structures, it’s very important to make sure your younger and older personnel understand that there are certain things, emails and whatnot, you shouldn’t interact with. I mean especially with the military, advancement is very time based. A lot of the captains running entire vessels are generally O-6s, been in the fleet for 30 or so years; they may not have the tech savviness as someone younger.
+Vidhya: So could you say protecting personnel is the most important thing here?
+Officer: I wouldn’t speak in absolutes, but to a certain extent, yes: getting access to credentials they shouldn’t have is an incredibly effective way for hackers to get into any system. Ransom and phishing attacks are big, and it’s our job to make sure all levels of administration understand how to detect a potential cyber attack. 
+Vidhya: Alright, I understand. I hope this question isn’t invasive, but I guess outside of just personnel, what are some vulnerable targets that hackers could exploit?
+Officer: Let me think…alright, one thing I will say, and this doesn’t just apply to the Coast Guard but you can see it with a lot of government agencies, you know with being less profit driven, is that they are usually reluctant to let go of legacy technologies. I’m sure this is a thing in all sectors for a lot of organizations, but theres a tendency to not want to change things when they are already “working.” A sort of sunk cost fallacy, if you will. The problem is we still want to integrate new technologies, which means creating all sorts of steps to make the two compatible and connect them. With every new step, that’s one more vulnerability a hacker could exploit. Do you get what I’m saying?
+Vidhya: I think so, yes. That must be really relevant for your guys as the Coast Guard is doing a lot of overhaul of their systems, especially with the relatively new CMS rate and whatnot.
+Officer: For sure. Another vulnerability, at least off the top of my head, which is more of an industry issue as well would be remote access controls. That’s definitely what hackers target the most and for good reason. The distance really does make that difference, you know?
+Vidhya: Thank you so much for all this information. Is there any advice you have for us and our experiment? (I debriefed the Officer about what our project is earlier in the email I sent him asking for an interview).
+Officer: Yeah of course, I remember you mentioning that you were looking into Advanced Persistent Threat attacks, which it is so great that you’re on top of that. I mean if you look at modern conflict, one big example being Ukraine vs. Russia. A big part of that is actually staying hidden. Focus on your AI agent being used to collect vulnerabilities. Stockpiling vulnerabilities is a term we use. I would recommend working on scraping data on people, finding out who is an important target. Information collection should be your primary goal, the attacks can happen with more planning. I hope that makes sense?
+Vidhya: Yes, it does. Thank you so much for going so in depth on this! I will definitely keep all of these things in mind. Thank you so much for taking the time out of your day to do this interview, sir. 
+Officer: Of course, anytime.
+
+
+
