@@ -130,25 +130,29 @@ Record AI decision logs vs. human oversight checkpoints.
 # Repository Structure
 
 ├── code/
-│   ├── agent_recon_demo.py
-│   ├── phishing_llm_experiment.ipynb
-│   └── dependencies.txt
+│ ├── agent_recon_demo.py # Demo code for AI Reconnaissance agent
+│ ├── phishing_llm_experiment.ipynb # Notebook for Experiment #2 (LinkedIn Phishing Agent)
+│ └── dependencies.txt # Dependencies used for first two experiments
+│
 ├── data/
-│   ├── experiment_outputs.csv
-│   ├── feedback_summary.txt      ← LLM summarization of class feedback
-│   ├── stakeholder_transcripts/
-│   │   ├── alex_reynolds_interview.txt
-│   │   └── coast_guard_officer.txt
-│   └── metrics_log.json
+│ ├── experiment_outputs.csv # Collected output data and test metrics
+│ ├── feedback_summary.txt # ← LLM summarization of class feedback
+│ ├── stakeholder_transcripts/ # Interview transcripts from industry stakeholders
+│ │ ├── alex_reynolds_interview.txt
+│ │ └── coast_guard_officer.txt
+│ └── metrics_log.json # Experiment logs and validation metrics
+│
 ├── prompts/
-│   ├── llm_prompts_used.md
-│   └── claude_experiments.pdf
+│ ├── llm_prompts_used.md # List of all LLM prompts used in Experiments #1–2
+│ └── claude_experiments.pdf # Claude prompt outputs and validation notes
+│
 ├── docs/
-│   ├── mid_quarter_analysis.pdf
-│   ├── mid_quarter_reflection.pdf
-│   ├── slides_link.txt
-│   └── ethical_diagram.png
-└── README.md  ← you are here
+│ ├── mid_quarter_analysis.pdf # Team 8 Mid-Quarter Analysis (1000-word reflection)
+│ ├── mid_quarter_reflection.pdf # Supporting essay draft and feedback summary
+│ ├── slides_link.txt # Google Slides presentation link
+│ └── ethical_diagram.png # Visualization of HIL and ethical model
+│
+└── README.md # ← You are here (project overview & contents)
 
 # Individual Contributions
 
