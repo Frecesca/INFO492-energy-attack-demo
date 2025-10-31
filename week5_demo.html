@@ -4,145 +4,179 @@
   <meta charset="UTF-8" />
   <title>Team 8 — Energy Sector — Offensive Posture (Week 5 Demo Skeleton)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    :root{
-      --bg:#0f1115; --panel:#151821; --muted:#1c2030; --text:#e9ecf1; --sub:#aab1c2; --accent:#67b0ff; --green:#44d28b; --red:#ff6b6b; --yellow:#ffd166;
-      --border:#2a3042; --chip:#22283a;
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cyber: {
+              bg: '#0f1115',
+              panel: '#151821',
+              muted: '#1c2030',
+              border: '#2a3042',
+              chip: '#22283a',
+            }
+          }
+        }
+      }
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;background:linear-gradient(180deg,#0b0d13,#0f1115);color:var(--text);font:14px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial;}
-    a{color:var(--accent);text-decoration:none}
-    header{position:sticky;top:0;z-index:10;background:rgba(10,12,17,.7);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
-    .wrap{max-width:1200px;margin:0 auto;padding:0 16px}
-    .nav{display:flex;gap:16px;align-items:center;min-height:60px}
-    .brand{font-weight:800;letter-spacing:.4px}
-    .nav a.btn{padding:8px 12px;border-radius:10px;background:var(--muted);border:1px solid var(--border)}
-    .nav a.btn.active{background:var(--chip);border-color:#3a425d}
-    main{max-width:1200px;margin:24px auto;padding:0 16px;display:grid;grid-template-columns:1fr;gap:16px}
-    .grid{display:grid;gap:16px}
-    .cols-2{grid-template-columns:1.2fr .8fr}
-    .panel{background:var(--panel);border:1px solid var(--border);border-radius:16px;overflow:hidden}
-    .panel h2,.panel h3{margin:0;padding:14px 16px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,#161a25,#131722)}
-    .panel .body{padding:16px}
-    .chip{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:999px;background:var(--chip);border:1px solid var(--border);color:var(--sub);font-size:12px}
-    .row{display:flex;gap:10px;flex-wrap:wrap}
-    .input, select{background:#0f1320;border:1px solid var(--border);color:var(--text);border-radius:12px;padding:10px 12px;width:100%}
-    .btn{cursor:pointer;background:#192033;border:1px solid var(--border);color:var(--text);padding:10px 12px;border-radius:12px}
-    .btn.primary{background:linear-gradient(180deg,#1b2a45,#1a2b4f);border-color:#2f3e60}
-    .btn.success{background:#163226;border-color:#265f45}
-    .btn.danger{background:#3a1c22;border-color:#5d2b33}
-    .tag{font-size:12px;color:var(--sub)}
-    table{width:100%;border-collapse:collapse}
-    th,td{padding:10px;border-bottom:1px solid var(--border);text-align:left}
-    tbody tr:hover{background:#141a26}
-    iframe{width:100%;height:380px;border:0;border-top:1px solid var(--border)}
-    footer{margin:24px 0 60px;color:var(--sub);text-align:center}
-    .hidden{display:none}
-    .ok{color:var(--green)} .warn{color:var(--yellow)} .bad{color:var(--red)}
-    /* tiny status lights */
-    .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--yellow)}
-    .dot.ok{background:var(--green)} .dot.bad{background:var(--red)}
-    .callout{padding:12px;border:1px dashed #39415a;border-radius:12px;background:#121725;color:var(--sub)}
-    .kbd{padding:2px 6px;border:1px solid var(--border);border-radius:6px;background:#0d111b;color:#c9d3ea;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
-    .small{font-size:12px;color:var(--sub)}
-    .section{scroll-margin-top:80px}
+  </script>
+  <style>
+    /* Additional custom styles for canvas and specific elements */
+    .selected {
+      background: rgba(103, 176, 255, 0.1);
+      border-left: 3px solid #67b0ff;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
   </style>
 </head>
-<body>
+<body class="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100 font-sans antialiased">
+  
   <!-- HEADER / NAV -->
-  <header>
-    <div class="wrap nav">
-      <div class="brand">Team 8 — Energy Offense</div>
-      <nav class="row" id="nav">
-        <a class="btn active" href="#home">Home</a>
-        <a class="btn" href="#auth">Login & Roles</a>
-        <a class="btn" href="#recon">Recon</a>
-        <a class="btn" href="#phishing">Phishing</a>
-        <a class="btn" href="#scoring">Scoring</a>
-        <a class="btn" href="#hil">HIL Control</a>
-        <a class="btn" href="#about">About</a>
-      </nav>
-      <div class="chip"><span class="dot" id="status-dot"></span> demo status</div>
+  <header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-lg border-b border-slate-800 shadow-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between min-h-16">
+        <div class="font-bold text-lg tracking-wide text-slate-100">Team 8 — Energy Offense</div>
+        
+        <nav class="hidden md:flex items-center gap-2" id="nav">
+          <a class="px-4 py-2 rounded-lg bg-slate-800 border border-slate-700 hover:bg-slate-700 hover:border-slate-600 transition-all duration-200 text-sm font-medium active" href="#home">Home</a>
+          <a class="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 hover:bg-slate-700 hover:border-slate-600 transition-all duration-200 text-sm font-medium" href="#auth">Login & Roles</a>
+          <a class="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 hover:bg-slate-700 hover:border-slate-600 transition-all duration-200 text-sm font-medium" href="#recon">Recon</a>
+          <a class="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 hover:bg-slate-700 hover:border-slate-600 transition-all duration-200 text-sm font-medium" href="#phishing">Phishing</a>
+          <a class="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 hover:bg-slate-700 hover:border-slate-600 transition-all duration-200 text-sm font-medium" href="#scoring">Scoring</a>
+          <a class="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 hover:bg-slate-700 hover:border-slate-600 transition-all duration-200 text-sm font-medium" href="#hil">HIL Control</a>
+          <a class="px-4 py-2 rounded-lg bg-slate-800/50 border border-slate-700/50 hover:bg-slate-700 hover:border-slate-600 transition-all duration-200 text-sm font-medium" href="#about">About</a>
+        </nav>
+        
+        <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-xs">
+          <span class="w-2 h-2 rounded-full bg-yellow-500" id="status-dot"></span>
+          <span class="text-slate-400">demo status</span>
+        </div>
+      </div>
     </div>
   </header>
 
-  <main>
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6">
+    
     <!-- HOME / OVERVIEW (integrates index.html narrative) -->
-    <section id="home" class="section grid cols-2">
-      <div class="panel">
-        <h2>Overview & Hypothesis</h2>
-        <div class="body">
-          <p class="tag">Context</p>
-          <p><strong>Hypothesis:</strong> AI recon agents can analyze energy systems significantly faster (parallel, low cost) while remaining under <em>human approval</em> for risky actions.</p>
-          <div class="row">
-            <span class="chip">Industry realism</span>
-            <span class="chip">RBAC</span>
-            <span class="chip">Evaluation</span>
-            <span class="chip">HIL</span>
-          </div>
-          <div class="callout" style="margin-top:12px">
-            This page unifies our earlier prototypes into a single realistic workflow: <strong>Login → Recon → Phishing → Scoring → HIL</strong>.
-          </div>
-          <p class="small">Source: integrated from our Week 1 narrative page.</p>
+    <section id="home" class="section grid grid-cols-1 lg:grid-cols-5 gap-6">
+      <div class="lg:col-span-3 bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+        <div class="px-6 py-4 border-b border-slate-800 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900">
+          <h2 class="text-xl font-bold text-slate-100">Overview & Hypothesis</h2>
         </div>
+        <div class="p-6 space-y-4">
+          <p class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Context</p>
+          <p class="text-slate-300 leading-relaxed">
+            <strong class="text-slate-100">Hypothesis:</strong> AI recon agents can analyze energy systems significantly faster (parallel, low cost) while remaining under <em class="text-blue-400">human approval</em> for risky actions.
+          </p>
+          
+          <div class="flex flex-wrap gap-2">
+            <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-400 text-xs">Industry realism</span>
+            <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-400 text-xs">RBAC</span>
+            <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-400 text-xs">Evaluation</span>
+            <span class="inline-flex items-center px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-400 text-xs">HIL</span>
+          </div>
+          
+          <div class="p-4 border border-dashed border-slate-700 rounded-xl bg-slate-950/50">
+            <p class="text-slate-400 text-sm leading-relaxed">
+              This page unifies our earlier prototypes into a single realistic workflow: <strong class="text-slate-200">Login → Recon → Phishing → Scoring → HIL</strong>.
+            </p>
+          </div>
+          
+          <p class="text-xs text-slate-500">Source: integrated from our Week 1 narrative page.</p>
+        </div>
+        
         <!-- Embed your existing index.html to show original background & flow -->
-        <iframe src="index.html" title="Week1 Narrative (index.html)"></iframe>
+        <iframe src="index.html" title="Week1 Narrative (index.html)" class="w-full h-96 border-t border-slate-800"></iframe>
       </div>
 
-      <div class="panel">
-        <h2>Demo Quick Controls</h2>
-        <div class="body">
-          <div class="row">
-            <button class="btn" onclick="setStatus('ok')">Mark Status: <span class="ok">OK</span></button>
-            <button class="btn" onclick="setStatus('warn')">Mark Status: <span class="warn">Needs Work</span></button>
-            <button class="btn" onclick="setStatus('bad')">Mark Status: <span class="bad">Blocked</span></button>
+      <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+        <div class="px-6 py-4 border-b border-slate-800 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900">
+          <h2 class="text-xl font-bold text-slate-100">Demo Quick Controls</h2>
+        </div>
+        <div class="p-6 space-y-6">
+          <div class="flex flex-wrap gap-2">
+            <button class="flex-1 px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-700 hover:bg-slate-700 hover:border-emerald-600 transition-all duration-200 text-sm font-medium" onclick="setStatus('ok')">
+              Mark: <span class="text-emerald-400 ml-1">OK</span>
+            </button>
+            <button class="flex-1 px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-700 hover:bg-slate-700 hover:border-yellow-600 transition-all duration-200 text-sm font-medium" onclick="setStatus('warn')">
+              Mark: <span class="text-yellow-400 ml-1">Needs Work</span>
+            </button>
+            <button class="flex-1 px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-700 hover:bg-slate-700 hover:border-red-600 transition-all duration-200 text-sm font-medium" onclick="setStatus('bad')">
+              Mark: <span class="text-red-400 ml-1">Blocked</span>
+            </button>
           </div>
-          <p class="small" style="margin-top:10px">Use this to communicate demo readiness during the feedback lab.</p>
-          <hr style="border-color:var(--border)">
-          <p class="tag">This Week</p>
-          <ul>
-            <li>Publish cloud URL for this demo (non-localhost)</li>
-            <li>Provide test creds in #announcements</li>
-            <li>Test at least 2 other teams (1 offense + 1 defense)</li>
-          </ul>
-          <p class="small">Lab rules: synthetic data only, keep HIL for risky actions, log agent actions.</p>
+          
+          <p class="text-xs text-slate-500">Use this to communicate demo readiness during the feedback lab.</p>
+          
+          <hr class="border-slate-800">
+          
+          <div>
+            <p class="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-3">This Week</p>
+            <ul class="space-y-2 text-sm text-slate-400">
+              <li class="flex items-start">
+                <span class="text-blue-400 mr-2">→</span>
+                <span>Publish cloud URL for this demo (non-localhost)</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-400 mr-2">→</span>
+                <span>Provide test creds in #announcements</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-400 mr-2">→</span>
+                <span>Test at least 2 other teams (1 offense + 1 defense)</span>
+              </li>
+            </ul>
+          </div>
+          
+          <p class="text-xs text-slate-500 leading-relaxed">Lab rules: synthetic data only, keep HIL for risky actions, log agent actions.</p>
         </div>
       </div>
     </section>
 
     <!-- AUTHENTICATION & ROLES -->
-    <section id="auth" class="section panel">
-      <h2>Login & Role Authentication (Token + Lead Hacker Approval)</h2>
-      <div class="body grid cols-2">
-        <div>
-          <label class="tag">Access Token (not email/password)</label>
-          <input class="input" id="token" placeholder="paste token here e.g. T8-PSE-OPS-2025" />
-          <div class="row" style="margin-top:10px">
-            <select id="role" class="input">
+    <section id="auth" class="section bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+      <div class="px-6 py-4 border-b border-slate-800 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900">
+        <h2 class="text-xl font-bold text-slate-100">Login & Role Authentication (Token + Lead Hacker Approval)</h2>
+      </div>
+      <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-slate-500 font-semibold mb-2">Access Token (not email/password)</label>
+            <input class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all text-slate-200 placeholder-slate-600" id="token" placeholder="paste token here e.g. T8-PSE-OPS-2025" />
+          </div>
+          
+          <div class="flex gap-3">
+            <select id="role" class="flex-1 px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all text-slate-200">
               <option value="recon">Recon Operator</option>
               <option value="supervisor">Supervisor</option>
               <option value="lead">Lead Hacker</option>
             </select>
-            <button class="btn primary" onclick="requestAccess()">Request Access</button>
+            <button class="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 border border-blue-600 transition-all duration-200 font-medium shadow-lg shadow-blue-900/30" onclick="requestAccess()">Request Access</button>
           </div>
-          <p id="auth-msg" class="small"></p>
-          <div id="lead-approve" class="hidden" style="margin-top:10px">
-            <div class="callout">
-              <strong>Lead Hacker Call</strong>: “Approve access for token <span id="tok"></span> as <span id="rl"></span>?”
-              <div class="row" style="margin-top:8px">
-                <button class="btn success" onclick="approveAccess(true)">Approve</button>
-                <button class="btn danger" onclick="approveAccess(false)">Reject</button>
+          
+          <p id="auth-msg" class="text-sm text-slate-400"></p>
+          
+          <div id="lead-approve" class="hidden mt-4">
+            <div class="p-4 border border-dashed border-blue-700/50 rounded-xl bg-blue-950/20">
+              <strong class="text-slate-200">Lead Hacker Call</strong>: "Approve access for token <span id="tok" class="text-blue-400"></span> as <span id="rl" class="text-blue-400"></span>?"
+              <div class="flex gap-3 mt-4">
+                <button class="flex-1 px-4 py-2 rounded-lg bg-emerald-900/50 border border-emerald-700 hover:bg-emerald-800 transition-all duration-200 text-emerald-300 font-medium" onclick="approveAccess(true)">Approve</button>
+                <button class="flex-1 px-4 py-2 rounded-lg bg-red-900/50 border border-red-700 hover:bg-red-800 transition-all duration-200 text-red-300 font-medium" onclick="approveAccess(false)">Reject</button>
               </div>
             </div>
           </div>
         </div>
+        
         <div>
-          <div class="callout">
-            <p><strong>Realism:</strong> Energy operations rarely rely on simple email/password. We simulate a gate requiring a token + a manual approval by a <em>Lead Hacker</em> (2FA-like human step).</p>
-            <ul class="small">
-              <li>// TODO [Vidhya]: Replace with a nicer modal & visual call flow.</li>
-              <li>// TODO [Frecesca]: Plug this decision into HIL log below.</li>
+          <div class="p-4 border border-dashed border-slate-700 rounded-xl bg-slate-950/50 space-y-3">
+            <p class="text-slate-300 leading-relaxed"><strong class="text-slate-100">Realism:</strong> Energy operations rarely rely on simple email/password. We simulate a gate requiring a token + a manual approval by a <em class="text-blue-400">Lead Hacker</em> (2FA-like human step).</p>
+            <ul class="text-xs text-slate-500 space-y-1.5 pl-4">
+              <li class="list-disc">// TODO [Vidhya]: Replace with a nicer modal & visual call flow.</li>
+              <li class="list-disc">// TODO [Frecesca]: Plug this decision into HIL log below.</li>
             </ul>
           </div>
         </div>
@@ -150,77 +184,110 @@
     </section>
 
     <!-- RECON (integrates week2.html) -->
-    <section id="recon" class="section panel">
-      <h2>Recon Module (LinkedIn / Perplexity Targets + Speed PoC)</h2>
-      <div class="body">
-        <p class="tag">Proof-of-Concept Speed (Week 2)</p>
-        <p>Below embeds our Week 2 “AI vs Human Recon Race” demo to demonstrate speed & parallelism.</p>
-        <iframe src="week2.html" title="Week2 Recon Race (week2.html)"></iframe>
+    <section id="recon" class="section bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+      <div class="px-6 py-4 border-b border-slate-800 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900">
+        <h2 class="text-xl font-bold text-slate-100">Recon Module (LinkedIn / Perplexity Targets + Speed PoC)</h2>
+      </div>
+      <div class="p-6 space-y-6">
+        <div>
+          <p class="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-3">Proof-of-Concept Speed (Week 2)</p>
+          <p class="text-sm text-slate-400 mb-4">Below embeds our Week 2 "AI vs Human Recon Race" demo to demonstrate speed & parallelism.</p>
+          <iframe src="week2.html" title="Week2 Recon Race (week2.html)" class="w-full h-96 rounded-lg border border-slate-800"></iframe>
+        </div>
 
-        <div class="grid cols-2" style="margin-top:16px">
-          <div>
-            <h3>Target Discovery (Synthetic)</h3>
-            <table>
-              <thead><tr><th>Name</th><th>Role</th><th>Email</th><th>Bounce</th><th>Seed Score</th></tr></thead>
-              <tbody id="targets">
-                <!-- Seeded examples; in Week 6 we’ll iterate these with model outputs -->
-              </tbody>
-            </table>
-            <p class="small">
-              // TODO [Frecesca]: connect discovery → phishing selection flow. <br>
-              // TODO [Kibret]: populate with LinkedIn/Perplexity-derived synthetic list + bounce check (0/1).
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+          <div class="lg:col-span-3">
+            <h3 class="text-lg font-semibold text-slate-200 mb-4">Target Discovery (Synthetic)</h3>
+            <div class="overflow-x-auto rounded-lg border border-slate-800">
+              <table class="w-full">
+                <thead class="bg-slate-950 border-b border-slate-800">
+                  <tr>
+                    <th class="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Name</th>
+                    <th class="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Role</th>
+                    <th class="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Email</th>
+                    <th class="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Bounce</th>
+                    <th class="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Seed Score</th>
+                  </tr>
+                </thead>
+                <tbody id="targets" class="divide-y divide-slate-800">
+                  <!-- Seeded examples; in Week 6 we'll iterate these with model outputs -->
+                </tbody>
+              </table>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 leading-relaxed space-y-1">
+              <span class="block">// TODO [Frecesca]: connect discovery → phishing selection flow.</span>
+              <span class="block">// TODO [Kibret]: populate with LinkedIn/Perplexity-derived synthetic list + bounce check (0/1).</span>
             </p>
           </div>
-          <div>
-            <h3>Notes</h3>
-            <div class="callout">
-              <ul class="small">
-                <li>Discovery sources: LinkedIn title patterns, company domain guessing, SMTP ping.</li>
-                <li>// TODO [Kibret]: add columns for <em>it/ot access</em>, <em>mfa</em>, <em>shift</em>, etc.</li>
-                <li>// TODO [Vidhya]: add quick filters (role, region, access level).</li>
-              </ul>
+          
+          <div class="lg:col-span-2 space-y-4">
+            <div>
+              <h3 class="text-lg font-semibold text-slate-200 mb-4">Notes</h3>
+              <div class="p-4 border border-dashed border-slate-700 rounded-xl bg-slate-950/50">
+                <ul class="text-xs text-slate-500 space-y-2 pl-4">
+                  <li class="list-disc">Discovery sources: LinkedIn title patterns, company domain guessing, SMTP ping.</li>
+                  <li class="list-disc">// TODO [Kibret]: add columns for <em>it/ot access</em>, <em>mfa</em>, <em>shift</em>, etc.</li>
+                  <li class="list-disc">// TODO [Vidhya]: add quick filters (role, region, access level).</li>
+                </ul>
+              </div>
             </div>
-            <div class="row">
-              <button class="btn" onclick="mockDiscover()">Mock Discover Targets</button>
-            </div>
+            
+            <button class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 hover:bg-slate-700 hover:border-blue-600 transition-all duration-200 font-medium" onclick="mockDiscover()">Mock Discover Targets</button>
           </div>
         </div>
       </div>
     </section>
 
     <!-- PHISHING (uses email_agent outputs as examples) -->
-    <section id="phishing" class="section panel">
-      <h2>Phishing Engine (Personalized Drafts + HIL Review)</h2>
-      <div class="body grid cols-2">
-        <div>
-          <label class="tag">Selected Target</label>
-          <select id="pickTarget" class="input"></select>
-
-          <label class="tag" style="margin-top:10px">Draft Email (generated offline by agent)</label>
-          <textarea class="input" id="emailDraft" rows="9" placeholder="AI-generated email will appear here…"></textarea>
-
-          <div class="row" style="margin-top:10px">
-            <button class="btn" onclick="generateDraft()">Generate Draft</button>
-            <button class="btn" onclick="tweakTone()">Tone: balanced</button>
-            <button class="btn" onclick="hilQueue()">Send to HIL Queue</button>
+    <section id="phishing" class="section bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+      <div class="px-6 py-4 border-b border-slate-800 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900">
+        <h2 class="text-xl font-bold text-slate-100">Phishing Engine (Personalized Drafts + HIL Review)</h2>
+      </div>
+      <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-slate-500 font-semibold mb-2">Selected Target</label>
+            <select id="pickTarget" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all text-slate-200"></select>
           </div>
-          <p class="small">
-            // TODO [Frecesca]: wire this to HIL queue table below. <br>
-            // TODO [Vidhya]: add tone switch UI (formal / balanced / casual). <br>
-            // TODO [Kibret]: optional model prompt log reference (explainability).
+
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-slate-500 font-semibold mb-2">Draft Email (generated offline by agent)</label>
+            <textarea class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all text-slate-200 placeholder-slate-600 font-mono text-sm" id="emailDraft" rows="9" placeholder="AI-generated email will appear here…"></textarea>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            <button class="flex-1 px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 hover:bg-slate-700 hover:border-blue-600 transition-all duration-200 font-medium text-sm" onclick="generateDraft()">Generate Draft</button>
+            <button class="flex-1 px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 hover:bg-slate-700 transition-all duration-200 font-medium text-sm" onclick="tweakTone()">Tone: balanced</button>
+            <button class="flex-1 px-4 py-2.5 rounded-xl bg-blue-900/50 border border-blue-700 hover:bg-blue-800 transition-all duration-200 text-blue-300 font-medium text-sm" onclick="hilQueue()">Send to HIL Queue</button>
+          </div>
+          
+          <p class="text-xs text-slate-500 leading-relaxed space-y-1">
+            <span class="block">// TODO [Frecesca]: wire this to HIL queue table below.</span>
+            <span class="block">// TODO [Vidhya]: add tone switch UI (formal / balanced / casual).</span>
+            <span class="block">// TODO [Kibret]: optional model prompt log reference (explainability).</span>
           </p>
         </div>
-        <div>
-          <div class="callout">
-            <p><strong>Realism:</strong> Before any outbound action, content is queued for human review. We keep a “no-autosend” policy for risky actions.</p>
-            <p class="small">Emails are <em>examples</em> produced by our offline <code>email_agent.py</code>; no real systems are touched.</p>
+        
+        <div class="space-y-4">
+          <div class="p-4 border border-dashed border-slate-700 rounded-xl bg-slate-950/50">
+            <p class="text-slate-300 leading-relaxed mb-2"><strong class="text-slate-100">Realism:</strong> Before any outbound action, content is queued for human review. We keep a "no-autosend" policy for risky actions.</p>
+            <p class="text-xs text-slate-500">Emails are <em>examples</em> produced by our offline <code class="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 font-mono text-blue-400">email_agent.py</code>; no real systems are touched.</p>
           </div>
-          <div class="panel" style="margin-top:10px">
-            <h3 style="border:0">HIL Review Queue (pending)</h3>
-            <div class="body">
-              <table>
-                <thead><tr><th>Target</th><th>Subject</th><th>Status</th></tr></thead>
-                <tbody id="hilQueueTable"></tbody>
+          
+          <div class="bg-slate-950/50 border border-slate-800 rounded-xl overflow-hidden">
+            <div class="px-4 py-3 border-b border-slate-800">
+              <h3 class="text-sm font-semibold text-slate-300">HIL Review Queue (pending)</h3>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead class="bg-slate-950 border-b border-slate-800">
+                  <tr>
+                    <th class="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Target</th>
+                    <th class="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Subject</th>
+                    <th class="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="hilQueueTable" class="divide-y divide-slate-800"></tbody>
               </table>
             </div>
           </div>
@@ -229,83 +296,129 @@
     </section>
 
     <!-- SCORING & EVALUATION (logistic regression placeholder) -->
-    <section id="scoring" class="section panel">
-      <h2>Scoring & Evaluation (Logistic Regression + Iterations)</h2>
-      <div class="body grid cols-2">
-        <div>
-          <table>
-            <thead><tr><th>Target</th><th>Features</th><th>RiskScore</th><th>Prob.</th><th>Label</th></tr></thead>
-            <tbody id="scoreTable"></tbody>
-          </table>
-          <p class="small">
-            // TODO [Kibret]: Replace mock scores with logistic regression outputs (JSON endpoint or inline data). <br>
-            // TODO [Vidhya]: add sparkline or nicer chart.
+    <section id="scoring" class="section bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+      <div class="px-6 py-4 border-b border-slate-800 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900">
+        <h2 class="text-xl font-bold text-slate-100">Scoring & Evaluation (Logistic Regression + Iterations)</h2>
+      </div>
+      <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="space-y-4">
+          <div class="overflow-x-auto rounded-lg border border-slate-800">
+            <table class="w-full">
+              <thead class="bg-slate-950 border-b border-slate-800">
+                <tr>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Target</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Features</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">RiskScore</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Prob.</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Label</th>
+                </tr>
+              </thead>
+              <tbody id="scoreTable" class="divide-y divide-slate-800"></tbody>
+            </table>
+          </div>
+          
+          <p class="text-xs text-slate-500 leading-relaxed space-y-1">
+            <span class="block">// TODO [Kibret]: Replace mock scores with logistic regression outputs (JSON endpoint or inline data).</span>
+            <span class="block">// TODO [Vidhya]: add sparkline or nicer chart.</span>
           </p>
-          <div class="row">
-            <button class="btn" onclick="runIteration()">Run Iteration</button>
-            <span class="tag">Iteration: <span id="iter">0</span></span>
+          
+          <div class="flex items-center gap-4">
+            <button class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 border border-blue-600 transition-all duration-200 font-medium shadow-lg shadow-blue-900/30" onclick="runIteration()">Run Iteration</button>
+            <span class="px-4 py-2 rounded-full bg-slate-800 border border-slate-700 text-xs">
+              Iteration: <span id="iter" class="text-blue-400 font-semibold">0</span>
+            </span>
           </div>
         </div>
-        <div>
-          <canvas id="chart" width="520" height="260" style="background:#0f1320;border:1px solid var(--border);border-radius:12px"></canvas>
-          <p class="small">
-            Mock learning curve (accuracy ↑ with iterations). <br>
-            // TODO [Kibret]: bind to real metrics: accuracy / FPR / runtime. <br>
-            // TODO [Frecesca]: narrate eval criteria (speed, precision vs false-positives, operational risk).
+        
+        <div class="space-y-4">
+          <canvas id="chart" width="520" height="260" class="w-full rounded-xl bg-slate-950 border border-slate-800 shadow-lg"></canvas>
+          <p class="text-xs text-slate-500 leading-relaxed space-y-1">
+            <span class="block">Mock learning curve (accuracy ↑ with iterations).</span>
+            <span class="block">// TODO [Kibret]: bind to real metrics: accuracy / FPR / runtime.</span>
+            <span class="block">// TODO [Frecesca]: narrate eval criteria (speed, precision vs false-positives, operational risk).</span>
           </p>
         </div>
       </div>
     </section>
 
     <!-- HIL CONTROL (approval + logs) -->
-    <section id="hil" class="section panel">
-      <h2>Human-in-the-Loop Control Center</h2>
-      <div class="body grid cols-2">
-        <div>
-          <label class="tag">Approval Actions</label>
-          <div class="row">
-            <button class="btn success" onclick="approveSelected()">Approve Selected</button>
-            <button class="btn danger" onclick="rejectSelected()">Reject Selected</button>
-            <button class="btn" onclick="killSwitch()">Emergency Kill-Switch</button>
+    <section id="hil" class="section bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+      <div class="px-6 py-4 border-b border-slate-800 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900">
+        <h2 class="text-xl font-bold text-slate-100">Human-in-the-Loop Control Center</h2>
+      </div>
+      <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-slate-500 font-semibold mb-3">Approval Actions</label>
+            <div class="flex flex-wrap gap-2">
+              <button class="flex-1 px-4 py-2.5 rounded-xl bg-emerald-900/50 border border-emerald-700 hover:bg-emerald-800 transition-all duration-200 text-emerald-300 font-medium" onclick="approveSelected()">Approve Selected</button>
+              <button class="flex-1 px-4 py-2.5 rounded-xl bg-red-900/50 border border-red-700 hover:bg-red-800 transition-all duration-200 text-red-300 font-medium" onclick="rejectSelected()">Reject Selected</button>
+              <button class="w-full px-4 py-2.5 rounded-xl bg-red-950 border-2 border-red-700 hover:bg-red-900 hover:border-red-600 transition-all duration-200 text-red-300 font-bold shadow-lg shadow-red-900/30" onclick="killSwitch()">Emergency Kill-Switch</button>
+            </div>
           </div>
-          <p class="small">
-            // TODO [Frecesca]: ensure approvals update phishing send-state + scoring feedback. <br>
-            // TODO [Vidhya]: confirmation modals; disabled-state if not Supervisor/Lead.
+          
+          <p class="text-xs text-slate-500 leading-relaxed space-y-1">
+            <span class="block">// TODO [Frecesca]: ensure approvals update phishing send-state + scoring feedback.</span>
+            <span class="block">// TODO [Vidhya]: confirmation modals; disabled-state if not Supervisor/Lead.</span>
           </p>
         </div>
+        
         <div>
-          <h3 style="margin:0 0 10px 0">Approval Log</h3>
-          <table>
-            <thead><tr><th>Time</th><th>Actor</th><th>Action</th><th>Object</th></tr></thead>
-            <tbody id="hilLog"></tbody>
-          </table>
+          <h3 class="text-sm font-semibold text-slate-300 mb-3">Approval Log</h3>
+          <div class="overflow-x-auto rounded-lg border border-slate-800 max-h-80 overflow-y-auto">
+            <table class="w-full">
+              <thead class="bg-slate-950 border-b border-slate-800 sticky top-0">
+                <tr>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Time</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Actor</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Action</th>
+                  <th class="px-4 py-3 text-left text-xs font-semibold text-slate-400 uppercase tracking-wider">Object</th>
+                </tr>
+              </thead>
+              <tbody id="hilLog" class="divide-y divide-slate-800"></tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ABOUT / RESEARCH SUMMARY -->
-    <section id="about" class="section panel">
-      <h2>About & Research Summary</h2>
-      <div class="body grid cols-2">
-        <div>
-          <p><strong>Team:</strong> Vidhya Narayanan · Kibret Ogale · Frecesca (Meixuan) Wang</p>
-          <ul>
-            <li><strong>Stakeholder insights:</strong> detection speed, precision vs. false positives, operational risk.</li>
-            <li><strong>Policy:</strong> Synthetic data only. No interaction with real infrastructure.</li>
-            <li><strong>HIL:</strong> All risky actions require explicit human approval.</li>
+    <section id="about" class="section bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+      <div class="px-6 py-4 border-b border-slate-800 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900">
+        <h2 class="text-xl font-bold text-slate-100">About & Research Summary</h2>
+      </div>
+      <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="space-y-4">
+          <p class="text-slate-300"><strong class="text-slate-100">Team:</strong> Vidhya Narayanan · Kibret Ogale · Frecesca (Meixuan) Wang</p>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li class="flex items-start">
+              <span class="text-blue-400 mr-2 mt-0.5">→</span>
+              <span><strong class="text-slate-300">Stakeholder insights:</strong> detection speed, precision vs. false positives, operational risk.</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-blue-400 mr-2 mt-0.5">→</span>
+              <span><strong class="text-slate-300">Policy:</strong> Synthetic data only. No interaction with real infrastructure.</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-blue-400 mr-2 mt-0.5">→</span>
+              <span><strong class="text-slate-300">HIL:</strong> All risky actions require explicit human approval.</span>
+            </li>
           </ul>
-          <p class="small">// TODO [Frecesca]: paste 2–3 bullet quotes from stakeholders & class feedback.</p>
+          <p class="text-xs text-slate-500">// TODO [Frecesca]: paste 2–3 bullet quotes from stakeholders & class feedback.</p>
         </div>
-        <div class="callout">
-          <p><strong>Demo 3 target:</strong> Show end-to-end workflow with realistic roles & evaluation. Even partial automation is OK if logic & controls are explicit.</p>
-          <p class="small">Next: connect model outputs, finalize role-based UI, tighten approval audit trail.</p>
+        
+        <div class="p-4 border border-dashed border-slate-700 rounded-xl bg-slate-950/50 space-y-3">
+          <p class="text-slate-300 leading-relaxed"><strong class="text-slate-100">Demo 3 target:</strong> Show end-to-end workflow with realistic roles & evaluation. Even partial automation is OK if logic & controls are explicit.</p>
+          <p class="text-xs text-slate-500">Next: connect model outputs, finalize role-based UI, tighten approval audit trail.</p>
         </div>
       </div>
     </section>
 
-    <footer>
-      <p>Ethics & Safety: This is a simulated environment with synthetic data. No real systems/accounts are accessed. Human-in-the-loop approval is mandatory for risky actions.</p>
-      <p class="small">© Team 8 — Energy Offense · INFO 492</p>
+    <footer class="mt-12 mb-16 text-center space-y-3">
+      <p class="text-slate-400 text-sm leading-relaxed max-w-4xl mx-auto">
+        <strong class="text-slate-300">Ethics & Safety:</strong> This is a simulated environment with synthetic data. No real systems/accounts are accessed. Human-in-the-loop approval is mandatory for risky actions.
+      </p>
+      <p class="text-xs text-slate-600">© Team 8 — Energy Offense · INFO 492</p>
     </footer>
   </main>
 
@@ -325,9 +438,9 @@
     // Status light
     function setStatus(level){
       const dot=document.getElementById('status-dot');
-      dot.classList.remove('ok','bad');
-      if(level==='ok') dot.classList.add('ok');
-      if(level==='bad') dot.classList.add('bad');
+      dot.classList.remove('bg-emerald-500','bg-red-500');
+      if(level==='ok') dot.classList.add('bg-emerald-500');
+      if(level==='bad') dot.classList.add('bg-red-500');
     }
 
     // -------------------------
@@ -351,10 +464,10 @@
       document.getElementById('lead-approve').classList.add('hidden');
       state.auth.approved=!!ok;
       if(ok){
-        msg.innerHTML = 'Access <span class="ok">approved</span>. Role: <b>'+state.auth.role+'</b>';
+        msg.innerHTML = 'Access <span class="text-emerald-400 font-semibold">approved</span>. Role: <b>'+state.auth.role+'</b>';
         hilLog('LeadHacker','approve-access',state.auth.token);
       }else{
-        msg.innerHTML = 'Access <span class="bad">rejected</span>.';
+        msg.innerHTML = 'Access <span class="text-red-400 font-semibold">rejected</span>.';
         hilLog('LeadHacker','reject-access',state.auth.token);
       }
       // TODO [Vidhya]: gate UI sections by role/approval if desired.
@@ -380,9 +493,12 @@
       tbody.innerHTML='';
       state.targets.forEach(t=>{
         const tr=document.createElement('tr');
-        tr.innerHTML=`<td>${t.name}</td><td>${t.role}</td><td>${t.email}</td>
-                      <td>${t.bounce?'<span class="bad">✖</span>':'<span class="ok">✔</span>'}</td>
-                      <td>${(t.score*100|0)/100}</td>`;
+        tr.className='hover:bg-slate-800/50 transition-colors cursor-pointer';
+        tr.innerHTML=`<td class="px-4 py-3 text-sm text-slate-300">${t.name}</td>
+                      <td class="px-4 py-3 text-sm text-slate-400">${t.role}</td>
+                      <td class="px-4 py-3 text-sm text-slate-400 font-mono text-xs">${t.email}</td>
+                      <td class="px-4 py-3 text-sm">${t.bounce?'<span class="text-red-400 font-semibold">✖</span>':'<span class="text-emerald-400 font-semibold">✔</span>'}</td>
+                      <td class="px-4 py-3 text-sm text-slate-300 font-semibold">${(t.score*100|0)/100}</td>`;
         tbody.appendChild(tr);
       });
     }
@@ -406,7 +522,7 @@
       const body = 
 `Hi ${t.name.split(' ')[0]},
 
-We’re scheduling a brief maintenance window for your ${t.role}.
+We're scheduling a brief maintenance window for your ${t.role}.
 Please review the attached checklist and confirm your shift availability.
 If you cannot access the portal, use the temporary link below (expires in 15 minutes).
 
@@ -436,7 +552,16 @@ Grid Ops Support
       tb.innerHTML='';
       state.hilQueue.forEach((q,idx)=>{
         const tr=document.createElement('tr');
-        tr.innerHTML = `<td>${q.target}</td><td>${q.subject}</td><td>${q.status}</td>`;
+        tr.className='hover:bg-slate-800/50 transition-colors cursor-pointer';
+        tr.innerHTML = `<td class="px-4 py-3 text-sm text-slate-300">${q.target}</td>
+                        <td class="px-4 py-3 text-sm text-slate-400">${q.subject}</td>
+                        <td class="px-4 py-3 text-sm">
+                          <span class="px-2 py-1 rounded-full text-xs ${
+                            q.status==='pending'?'bg-yellow-900/50 text-yellow-300 border border-yellow-700':
+                            q.status==='approved'?'bg-emerald-900/50 text-emerald-300 border border-emerald-700':
+                            'bg-red-900/50 text-red-300 border border-red-700'
+                          }">${q.status}</span>
+                        </td>`;
         tr.onclick=()=>{ tr.classList.toggle('selected'); tr.dataset.idx=idx; };
         tb.appendChild(tr);
       });
@@ -458,7 +583,16 @@ Grid Ops Support
       tb.innerHTML='';
       state.scores.forEach(s=>{
         const tr=document.createElement('tr');
-        tr.innerHTML = `<td>${s.target}</td><td>${s.features}</td><td>${s.risk}</td><td>${s.prob}</td><td>${s.label}</td>`;
+        tr.className='hover:bg-slate-800/50 transition-colors';
+        tr.innerHTML = `<td class="px-4 py-3 text-sm text-slate-300">${s.target}</td>
+                        <td class="px-4 py-3 text-xs text-slate-500 font-mono">${s.features}</td>
+                        <td class="px-4 py-3 text-sm text-slate-300 font-semibold">${s.risk}</td>
+                        <td class="px-4 py-3 text-sm text-slate-300 font-semibold">${s.prob}</td>
+                        <td class="px-4 py-3 text-sm">
+                          <span class="px-2 py-1 rounded-full text-xs font-semibold ${
+                            s.label?'bg-red-900/50 text-red-300 border border-red-700':'bg-slate-800 text-slate-400 border border-slate-700'
+                          }">${s.label}</span>
+                        </td>`;
         tb.appendChild(tr);
       });
     }
@@ -483,20 +617,24 @@ Grid Ops Support
       x.clearRect(0,0,c.width,c.height);
       const w=c.width, h=c.height, pad=30;
       // Axes
-      x.strokeStyle='#314163'; x.beginPath(); x.moveTo(pad, h-pad); x.lineTo(w-pad, h-pad); x.moveTo(pad,pad); x.lineTo(pad,h-pad); x.stroke();
+      x.strokeStyle='#475569'; x.lineWidth=2; x.beginPath(); x.moveTo(pad, h-pad); x.lineTo(w-pad, h-pad); x.moveTo(pad,pad); x.lineTo(pad,h-pad); x.stroke();
       // Mock accuracy curve from iteration
       const it=state.iteration;
       const points=[0, 0.62, 0.68, 0.73, 0.78, 0.80, 0.82];
       const acc = points[Math.min(points.length-1,it)];
       const series=[0.62, Math.max(0.62, acc)];
       // plot
-      x.strokeStyle='#67b0ff'; x.beginPath();
+      x.strokeStyle='#67b0ff'; x.lineWidth=3; x.beginPath();
       const yy = v => (h-pad) - v*(h-2*pad);
       series.forEach((v,i)=>{ const px = pad + i*( (w-2*pad)/(series.length-1) ); const py = yy(v); i?x.lineTo(px,py):x.moveTo(px,py); });
       x.stroke();
+      // points
+      x.fillStyle='#67b0ff';
+      series.forEach((v,i)=>{ const px = pad + i*( (w-2*pad)/(series.length-1) ); const py = yy(v); x.beginPath(); x.arc(px,py,5,0,2*Math.PI); x.fill(); });
       // labels
-      x.fillStyle='#aab1c2'; x.fillText('accuracy', w-90, pad+10);
-      x.fillText('iter='+it, w-80, pad+26);
+      x.fillStyle='#94a3b8'; x.font='14px sans-serif'; x.fillText('Accuracy', w-100, pad+15);
+      x.fillText('Iter: '+it, w-90, pad+35);
+      x.fillText(acc.toFixed(2), w-90, pad+55);
     }
 
     // -------------------------
@@ -525,7 +663,17 @@ Grid Ops Support
     function hilLog(actor,action,obj){
       const tb=document.getElementById('hilLog');
       const tr=document.createElement('tr');
-      tr.innerHTML = `<td>${new Date().toLocaleTimeString()}</td><td>${actor}</td><td>${action}</td><td>${obj}</td>`;
+      tr.className='hover:bg-slate-800/50 transition-colors';
+      tr.innerHTML = `<td class="px-4 py-3 text-xs text-slate-400 font-mono">${new Date().toLocaleTimeString()}</td>
+                      <td class="px-4 py-3 text-sm text-slate-300">${actor}</td>
+                      <td class="px-4 py-3 text-sm">
+                        <span class="px-2 py-1 rounded-full text-xs ${
+                          action.includes('approve')?'bg-emerald-900/50 text-emerald-300 border border-emerald-700':
+                          action.includes('reject')||action.includes('kill')?'bg-red-900/50 text-red-300 border border-red-700':
+                          'bg-blue-900/50 text-blue-300 border border-blue-700'
+                        }">${action}</span>
+                      </td>
+                      <td class="px-4 py-3 text-sm text-slate-400">${obj}</td>`;
       tb.prepend(tr);
     }
 
