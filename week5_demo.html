@@ -155,6 +155,9 @@
           <div>
             <label class="block text-xs uppercase tracking-wider text-slate-500 font-semibold mb-2">Access Token (not email/password)</label>
             <input class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all text-slate-200 placeholder-slate-600" id="token" placeholder="paste token here e.g. T8-PSE-OPS-2025" />
+            <p class="text-xs text-slate-500 mt-2">
+              Test Token for feedback lab: <code class="text-blue-400 bg-slate-950 px-2 py-0.5 rounded border border-slate-700">T8-PSE-OPS-2025</code>
+            </p>
           </div>
           
           <div class="flex gap-3">
@@ -455,18 +458,31 @@
     // AUTH FLOW (token + lead approval)
     // -------------------------
     function requestAccess(){
-      const tokenEl=document.getElementById('token');
-      const roleEl=document.getElementById('role');
-      const msg=document.getElementById('auth-msg');
-      const token=tokenEl.value.trim();
-      const role=roleEl.value;
-      if(!token){ msg.textContent='Provide access token.'; return; }
-      state.auth.token=token; state.auth.role=role; state.auth.approved=false;
-      document.getElementById('tok').textContent=token;
-      document.getElementById('rl').textContent=role;
-      document.getElementById('lead-approve').classList.remove('hidden');
-      msg.textContent='Request sent to Lead Hacker for manual approval…';
+      const tokenEl = document.getElementById('token');
+      const roleEl = document.getElementById('role');
+      const msg = document.getElementById('auth-msg');
+      const token = tokenEl.value.trim();
+      const role = roleEl.value;
+
+      if(!token){
+        msg.textContent = 'Please enter your access token.';
+        return;
+      }
+
+      // ✅ Token check
+      if(token === "T8-PSE-OPS-2025"){
+        msg.innerHTML = 'Access <span class="text-emerald-400 font-semibold">approved</span>. Role: <b>' + role + '</b>';
+        state.auth.token = token;
+        state.auth.role = role;
+        state.auth.approved = true;
+        hilLog('LeadHacker','approve-access', token);
+      } else {
+        msg.innerHTML = 'Access <span class="text-red-400 font-semibold">denied</span>. Invalid token.';
+        state.auth.approved = false;
+        hilLog('LeadHacker','reject-access', token);
+      }
     }
+    
     function approveAccess(ok){
       const msg=document.getElementById('auth-msg');
       document.getElementById('lead-approve').classList.add('hidden');
