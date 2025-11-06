@@ -1,0 +1,1883 @@
+# PSE Organization Structure Chart
+# 人员逻辑图 - PSE Energy Infrastructure Operations
+
+```mermaid
+graph TD
+    EXEC[Executive Leadership<br/>EXEC-001]
+    
+    CHIEF[David Chen<br/>Chief SCADA Engineer<br/>PSE-001<br/>T8-PSE-SCADA-CHIEF-001<br/>🔴 CRITICAL]
+    
+    SR1[Maria Rodriguez<br/>Senior SCADA Operator<br/>PSE-002<br/>T8-PSE-SCADA-SR-002<br/>🔴 CRITICAL]
+    
+    SR2[James Patterson<br/>Senior SCADA Operator<br/>PSE-003<br/>T8-PSE-SCADA-SR-003<br/>🔴 CRITICAL]
+    
+    SUPER[Laura Martinez<br/>Shift Supervisor<br/>PSE-020<br/>T8-PSE-SCADA-SUPER-020<br/>🔴 CRITICAL]
+    
+    ADMIN[Sarah Kim<br/>SCADA Admin<br/>PSE-004<br/>T8-PSE-IT-ADMIN-004<br/>🟠 HIGH]
+    
+    ENG[Christopher Garcia<br/>Protection Engineer<br/>PSE-013<br/>T8-PSE-ENG-PC-013<br/>🟠 HIGH]
+    
+    OP1[Robert Taylor<br/>SCADA Operator<br/>PSE-005<br/>T8-PSE-SCADA-OP-005<br/>🟠 HIGH]
+    
+    OP2[Emily Nguyen<br/>SCADA Operator<br/>PSE-006<br/>T8-PSE-SCADA-OP-006<br/>🟠 HIGH]
+    
+    OP3[Michael Johnson<br/>SCADA Operator<br/>PSE-007<br/>T8-PSE-SCADA-OP-007<br/>🟠 HIGH]
+    
+    OP4[Jessica Lee<br/>SCADA Operator<br/>PSE-008<br/>T8-PSE-SCADA-OP-008<br/>🟠 HIGH]
+    
+    SEC[Andrew Wilson<br/>Network Security<br/>PSE-009<br/>T8-PSE-IT-SEC-009<br/>🟠 HIGH]
+    
+    DBA[Linda Martinez<br/>Database Admin<br/>PSE-010<br/>T8-PSE-IT-DBA-010<br/>🟠 HIGH]
+    
+    TECH1[Thomas Brown<br/>Field Technician<br/>PSE-011<br/>T8-PSE-FIELD-TECH-011<br/>🟡 MEDIUM]
+    
+    TECH2[Patricia Davis<br/>Field Technician<br/>PSE-012<br/>T8-PSE-FIELD-TECH-012<br/>🟡 MEDIUM]
+    
+    ANALYST[Jennifer White<br/>Renewable Analyst<br/>PSE-014<br/>T8-PSE-ANALYST-014<br/>🟡 MEDIUM]
+    
+    ENG_JR[Steven Jackson<br/>Junior Engineer<br/>PSE-019<br/>T8-PSE-ENG-JR-019<br/>🟡 MEDIUM]
+    
+    MAINT1[Daniel Moore<br/>Turbine Tech<br/>PSE-015<br/>T8-PSE-FIELD-MAINT-015<br/>🟢 LOW]
+    
+    MAINT2[Nancy Thompson<br/>Turbine Tech<br/>PSE-016<br/>T8-PSE-FIELD-MAINT-016<br/>🟢 LOW]
+    
+    MAINT3[Kevin Anderson<br/>Turbine Tech<br/>PSE-017<br/>T8-PSE-FIELD-MAINT-017<br/>🟢 LOW]
+    
+    MAINT4[Karen Thomas<br/>Turbine Tech<br/>PSE-018<br/>T8-PSE-FIELD-MAINT-018<br/>🟢 LOW]
+    
+    EXEC --> CHIEF
+    
+    CHIEF --> SR1
+    CHIEF --> SR2
+    CHIEF --> SUPER
+    CHIEF --> ADMIN
+    CHIEF --> ENG
+    
+    SR1 --> OP1
+    SR1 --> OP2
+    SR1 --> TECH1
+    SR1 --> ANALYST
+    
+    SR2 --> OP3
+    SR2 --> OP4
+    SR2 --> TECH2
+    
+    SUPER -.Shift Oversight.-> OP1
+    SUPER -.Shift Oversight.-> OP2
+    SUPER -.Shift Oversight.-> OP3
+    SUPER -.Shift Oversight.-> OP4
+    
+    ADMIN --> SEC
+    ADMIN --> DBA
+    
+    ENG --> ENG_JR
+    
+    TECH1 --> MAINT1
+    TECH1 --> MAINT2
+    
+    TECH2 --> MAINT3
+    TECH2 --> MAINT4
+    
+    style CHIEF fill:#ff4444,stroke:#333,stroke-width:4px,color:#fff
+    style SR1 fill:#ff4444,stroke:#333,stroke-width:3px,color:#fff
+    style SR2 fill:#ff4444,stroke:#333,stroke-width:3px,color:#fff
+    style SUPER fill:#ff4444,stroke:#333,stroke-width:3px,color:#fff
+    style ADMIN fill:#ff9944,stroke:#333,stroke-width:2px
+    style ENG fill:#ff9944,stroke:#333,stroke-width:2px
+    style OP1 fill:#ff9944,stroke:#333,stroke-width:2px
+    style OP2 fill:#ff9944,stroke:#333,stroke-width:2px
+    style OP3 fill:#ff9944,stroke:#333,stroke-width:2px
+    style OP4 fill:#ff9944,stroke:#333,stroke-width:2px
+    style SEC fill:#ff9944,stroke:#333,stroke-width:2px
+    style DBA fill:#ff9944,stroke:#333,stroke-width:2px
+    style TECH1 fill:#ffdd44,stroke:#333,stroke-width:1px
+    style TECH2 fill:#ffdd44,stroke:#333,stroke-width:1px
+    style ANALYST fill:#ffdd44,stroke:#333,stroke-width:1px
+    style ENG_JR fill:#ffdd44,stroke:#333,stroke-width:1px
+    style MAINT1 fill:#88ff88,stroke:#333,stroke-width:1px
+    style MAINT2 fill:#88ff88,stroke:#333,stroke-width:1px
+    style MAINT3 fill:#88ff88,stroke:#333,stroke-width:1px
+    style MAINT4 fill:#88ff88,stroke:#333,stroke-width:1px
+```
+
+---
+
+## Organization Breakdown by Department
+
+### **Grid Operations (Control Center)**
+**Location:** Bellevue Control Center
+- David Chen - Chief SCADA Engineer (CRITICAL)
+- Maria Rodriguez - Senior SCADA Operator (CRITICAL)
+- James Patterson - Senior SCADA Operator (CRITICAL)
+- Laura Martinez - Shift Supervisor (CRITICAL)
+- Robert Taylor - SCADA Operator (HIGH)
+- Emily Nguyen - SCADA Operator (HIGH)
+- Michael Johnson - SCADA Operator (HIGH)
+- Jessica Lee - SCADA Operator (HIGH)
+- Jennifer White - Renewable Energy Analyst (MEDIUM)
+
+**Total:** 9 employees | **Critical Assets:** 4 | **High-Value Targets:** 5
+
+---
+
+### **IT Infrastructure**
+**Location:** Bellevue Control Center
+- Sarah Kim - SCADA Systems Administrator (HIGH)
+- Andrew Wilson - Network Security Engineer (HIGH)
+- Linda Martinez - Database Administrator (HIGH)
+
+**Total:** 3 employees | **All High-Value Targets**
+
+---
+
+### **Engineering**
+**Location:** Bellevue Engineering Office
+- Christopher Garcia - Protection & Control Engineer (HIGH)
+- Steven Jackson - Junior Protection Engineer (MEDIUM)
+
+**Total:** 2 employees
+
+---
+
+### **Field Operations - Wild Horse Wind Farm**
+**Location:** Wild Horse, Washington
+- Thomas Brown - Field Substation Technician (MEDIUM)
+- Daniel Moore - Wind Turbine Technician (LOW)
+- Nancy Thompson - Wind Turbine Technician (LOW)
+
+**Total:** 3 employees
+
+---
+
+### **Field Operations - Hopkins Ridge Wind Farm**
+**Location:** Hopkins Ridge, Washington
+- Patricia Davis - Field Substation Technician (MEDIUM)
+- Kevin Anderson - Wind Turbine Technician (LOW)
+- Karen Thomas - Wind Turbine Technician (LOW)
+
+**Total:** 3 employees
+
+---
+
+## Reporting Structure Summary
+
+| Level | Count | Clearance | Key Roles |
+|-------|-------|-----------|-----------|
+| **Executive** | 1 | - | CEO/VP of Operations |
+| **Chief/Lead** | 1 | CRITICAL | Chief SCADA Engineer |
+| **Senior/Supervisor** | 3 | CRITICAL | Senior Operators, Shift Supervisor |
+| **Mid-Level** | 8 | HIGH | Operators, IT Staff, Protection Engineer |
+| **Support** | 5 | MEDIUM | Field Techs, Analyst, Junior Engineer |
+| **Maintenance** | 4 | LOW | Turbine Technicians |
+
+**Total Workforce:** 22 positions (20 operational employees tracked)
+
+---
+
+## Command Chain During Operations
+
+### **Normal Operations**
+```
+CHIEF → SR Operators → Operators → Analysts/Techs
+```
+
+### **Shift Operations**
+```
+SHIFT SUPERVISOR → All Operators on duty
+(Supervisor has oversight but SR maintains technical authority)
+```
+
+### **Emergency Response**
+```
+CHIEF → SHIFT SUPERVISOR → All available CRITICAL/HIGH personnel
+(IT and Engineering support as needed)
+```
+
+### **Field Coordination**
+```
+SR Operators → Field Technicians → Maintenance Technicians
+(Direct communication via radio/phone for real-time issues)
+```
+
+---
+
+## Key Observations for Attack Simulation
+
+### **High-Value Targets (HVTs)**
+1. **David Chen (PSE-001)** - Master control over all systems
+2. **Sarah Kim (PSE-004)** - Can create/modify authentication
+3. **Laura Martinez (PSE-020)** - Emergency override capabilities
+4. **Linda Martinez (PSE-010)** - Can alter historical data
+
+### **Privilege Escalation Paths**
+```
+IT Admin → Network Access → Token Creation → SCADA Control
+Field Tech → Physical Access → Rogue Device → System Compromise
+Junior Engineer → Supervised Access → Credential Theft → Unauthorized Changes
+```
+
+### **Lateral Movement Opportunities**
+- Operators share similar access levels → Token reuse across sectors
+- Field techs have both remote AND physical access
+- Shift supervisor can override normal restrictions
+
+### **Single Points of Failure**
+- Only 1 Chief SCADA Engineer (no immediate backup)
+- Only 1 SCADA Systems Admin (controls all authentication)
+- Limited separation between IT infrastructure and SCADA operations
+
+# PSE Access Control and Permission Logic
+# 员工权限逻辑图 - Token-Based System Access
+
+```mermaid
+graph LR
+    subgraph Tokens["🔑 TOKEN TYPES"]
+        CHIEF[CHIEF<br/>T8-PSE-SCADA-CHIEF<br/>🔴 CRITICAL]
+        SR[SR/SUPER<br/>T8-PSE-SCADA-SR/SUPER<br/>🔴 CRITICAL]
+        OP[OPERATOR<br/>T8-PSE-SCADA-OP<br/>🟠 HIGH]
+        IT_A[IT-ADMIN<br/>T8-PSE-IT-ADMIN<br/>🟠 HIGH]
+        IT_S[IT-SEC<br/>T8-PSE-IT-SEC<br/>🟠 HIGH]
+        IT_D[IT-DBA<br/>T8-PSE-IT-DBA<br/>🟠 HIGH]
+        ENG[ENGINEER<br/>T8-PSE-ENG-PC<br/>🟠 HIGH]
+        TECH[FIELD-TECH<br/>T8-PSE-FIELD-TECH<br/>🟡 MEDIUM]
+        MAINT[MAINTENANCE<br/>T8-PSE-FIELD-MAINT<br/>🟢 LOW]
+    end
+    
+    subgraph Systems["⚙️ CONTROL SYSTEMS"]
+        SCADA[Master SCADA<br/>Siemens Spectrum Power 7]
+        WH[Wild Horse<br/>Wind Farm<br/>149 Turbines]
+        HR[Hopkins Ridge<br/>Wind Farm<br/>83 Turbines]
+        SUB[Substations<br/>RTU Control]
+        EMERG[Emergency<br/>Shutdown Systems]
+    end
+    
+    subgraph ITSys["💻 IT INFRASTRUCTURE"]
+        AUTH[Authentication<br/>Active Directory]
+        NET[Network<br/>Firewalls & Switches]
+        DB[SCADA Database<br/>Historian]
+        SEC[Security<br/>IDS/IPS/SIEM]
+    end
+    
+    subgraph Field["🏭 FIELD EQUIPMENT"]
+        LOCAL[Local HMI<br/>Substations]
+        TURB[Individual Turbines<br/>Control Panels]
+        RELAY[Protection Relays<br/>Settings]
+    end
+    
+    CHIEF -->|Full Control| SCADA
+    CHIEF -->|Full Control| WH
+    CHIEF -->|Full Control| HR
+    CHIEF -->|Full Control| SUB
+    CHIEF -->|Full Control| EMERG
+    
+    SR -->|Operational Control| SCADA
+    SR -->|Write/Execute| WH
+    SR -->|Write/Execute| HR
+    SR -->|Write/Execute| SUB
+    SR -->|Emergency Use| EMERG
+    
+    OP -->|Sector Control| WH
+    OP -->|Sector Control| HR
+    OP -->|Limited Control| SUB
+    OP -->|Read Only| SCADA
+    
+    IT_A -->|Admin Access| AUTH
+    IT_A -->|Full Control| NET
+    IT_A -->|Admin Access| DB
+    IT_A -.Read Only.-> SCADA
+    
+    IT_S -->|Full Control| SEC
+    IT_S -->|Config Access| NET
+    IT_S -.Monitoring.-> SCADA
+    
+    IT_D -->|Full Control| DB
+    IT_D -.Read Only.-> SCADA
+    
+    ENG -->|Config Access| RELAY
+    ENG -.Testing.-> SUB
+    ENG -.Read Only.-> SCADA
+    
+    TECH -->|On-Site Access| LOCAL
+    TECH -->|Physical Access| RELAY
+    TECH -.Read Only.-> SCADA
+    
+    MAINT -->|Local Only| TURB
+    MAINT -.No Remote Access.-> SCADA
+    
+    style CHIEF fill:#ff0000,stroke:#333,stroke-width:4px,color:#fff
+    style SR fill:#ff4444,stroke:#333,stroke-width:3px,color:#fff
+    style OP fill:#ff9944,stroke:#333,stroke-width:2px
+    style IT_A fill:#ff9944,stroke:#333,stroke-width:2px
+    style IT_S fill:#ff9944,stroke:#333,stroke-width:2px
+    style IT_D fill:#ff9944,stroke:#333,stroke-width:2px
+    style ENG fill:#ff9944,stroke:#333,stroke-width:2px
+    style TECH fill:#ffdd44,stroke:#333,stroke-width:2px
+    style MAINT fill:#88ff88,stroke:#333,stroke-width:2px
+    
+    style SCADA fill:#e6f3ff,stroke:#0066cc,stroke-width:3px
+    style WH fill:#e6f3ff,stroke:#0066cc,stroke-width:2px
+    style HR fill:#e6f3ff,stroke:#0066cc,stroke-width:2px
+    style SUB fill:#e6f3ff,stroke:#0066cc,stroke-width:2px
+    style EMERG fill:#ffe6e6,stroke:#cc0000,stroke-width:3px
+```
+
+---
+
+## Permission Level Matrix by System
+
+### 🎯 **Master SCADA Control System**
+| Token Type | Read | Write | Execute | Admin | Override |
+|-----------|------|-------|---------|-------|----------|
+| CHIEF | ✅ | ✅ | ✅ | ✅ | ✅ |
+| SR/SUPER | ✅ | ✅ | ✅ | ❌ | ✅ |
+| OPERATOR | ✅ | ✅ | ✅ | ❌ | ❌ |
+| IT-ADMIN | ✅ | ❌ | ❌ | ❌ | ❌ |
+| Others | ✅/❌ | ❌ | ❌ | ❌ | ❌ |
+
+---
+
+### ⚡ **Wind Farm Control**
+| Token Type | Wild Horse (149) | Hopkins Ridge (83) | Turbine Execute | Sector Limit |
+|-----------|-----------------|-------------------|-----------------|--------------|
+| CHIEF | All Sectors | All Sectors | ✅ | None |
+| SR (PSE-002) | All Sectors | Read Only | ✅ | None (WH) |
+| SR (PSE-003) | Read Only | All Sectors | ✅ | None (HR) |
+| OP (PSE-005) | Sectors A-C | Read Only | ✅ | 3 sectors |
+| OP (PSE-006) | Sectors D-F | Read Only | ✅ | 3 sectors |
+| OP (PSE-007) | Read Only | Sectors A-D | ✅ | 4 sectors |
+| OP (PSE-008) | Read Only | Sectors E-F | ✅ | 2 sectors |
+| Others | ❌ | ❌ | ❌ | N/A |
+
+---
+
+### 🔌 **Substation & Grid Equipment**
+| Token Type | Breaker Control | RTU Access | Load Switching | Protection Relays |
+|-----------|----------------|------------|----------------|-------------------|
+| CHIEF | Full Grid | All RTUs | ✅ | Config + Execute |
+| SR/SUPER | Zones 1-6 | All RTUs | ✅ | Execute Only |
+| OPERATOR | Assigned Zones | Limited RTUs | ✅ | Read Only |
+| ENG-PC | Testing Only | Read Only | ❌ | Full Config |
+| FIELD-TECH | On-Site Only | Local Only | ❌ | Physical Access |
+| Others | ❌ | ❌ | ❌ | ❌ |
+
+---
+
+### 💻 **IT Infrastructure Access**
+| Token Type | Active Directory | Network Config | Database | Security Systems |
+|-----------|-----------------|---------------|----------|------------------|
+| IT-ADMIN | Full Admin | Full Control | Admin | Read Only |
+| IT-SEC | User View | Read Only | Read Only | Full Control |
+| IT-DBA | User View | Read Only | Full Admin | Read Only |
+| CHIEF | Emergency | Emergency | Emergency | Read Only |
+| Others | ❌ | ❌ | ❌ | ❌ |
+
+**Critical Note:** IT staff CANNOT execute SCADA commands, but they can:
+- Create/modify user accounts (including fake SCADA tokens)
+- Access network infrastructure (potential for interception)
+- Modify database records (alter logs/historical data)
+
+---
+
+## Permission Logic Flowchart
+
+```mermaid
+flowchart TD
+    START[User Attempts System Access]
+    
+    TOKEN{Valid Token<br/>Format?}
+    
+    AUTH{Token Exists in<br/>Database?}
+    
+    ACTIVE{Token Status<br/>= Active?}
+    
+    TIME{Within Allowed<br/>Time Window?}
+    
+    GEO{Geographic<br/>Location Valid?}
+    
+    PERM{Has Permission<br/>for Action?}
+    
+    SCOPE{System in<br/>Access Scope?}
+    
+    MFA{Multi-Factor<br/>Auth Success?}
+    
+    ANOM{Anomaly<br/>Detected?}
+    
+    HIL{HIL<br/>Override?}
+    
+    GRANT[✅ ACCESS GRANTED<br/>Log Action]
+    
+    DENY[❌ ACCESS DENIED<br/>Log Attempt]
+    
+    HIL_ALERT[⚠️ HIL ALERT<br/>Require Human Review]
+    
+    START --> TOKEN
+    TOKEN -->|No| DENY
+    TOKEN -->|Yes| AUTH
+    AUTH -->|No| DENY
+    AUTH -->|Yes| ACTIVE
+    ACTIVE -->|No| DENY
+    ACTIVE -->|Yes| TIME
+    TIME -->|No| HIL_ALERT
+    TIME -->|Yes| GEO
+    GEO -->|No| HIL_ALERT
+    GEO -->|Yes| PERM
+    PERM -->|No| DENY
+    PERM -->|Yes| SCOPE
+    SCOPE -->|No| HIL_ALERT
+    SCOPE -->|Yes| MFA
+    MFA -->|Failed| DENY
+    MFA -->|Success| ANOM
+    ANOM -->|Yes| HIL
+    ANOM -->|No| GRANT
+    HIL -->|Approved| GRANT
+    HIL -->|Denied| DENY
+    
+    style GRANT fill:#88ff88,stroke:#006600,stroke-width:3px
+    style DENY fill:#ff8888,stroke:#cc0000,stroke-width:3px
+    style HIL_ALERT fill:#ffdd88,stroke:#ff6600,stroke-width:3px
+```
+
+---
+
+## Access Control Rules
+
+### **1. Time-Based Restrictions**
+```
+SCADA-OP tokens: 
+  - Shift A: 06:00-14:00 
+  - Shift B: 14:00-22:00
+  - Shift C: 22:00-06:00
+
+SCADA-SUPER tokens: 24/7 access (but assigned to shifts)
+
+FIELD-TECH tokens: 06:00-18:00 (business hours)
+
+FIELD-MAINT tokens: 06:00-18:00 (on-site only)
+```
+
+**HIL Trigger:** Token used outside designated hours → Immediate alert
+
+---
+
+### **2. Geographic Restrictions**
+```
+CRITICAL tokens: Bellevue Control Center + Emergency Remote
+HIGH SCADA tokens: Bellevue Control Center only
+HIGH IT tokens: Bellevue + Approved remote VPN
+MEDIUM tokens: Specific facility locations
+LOW tokens: On-site physical access only
+```
+
+**HIL Trigger:** Login from unusual IP/location → Alert + temporary lock
+
+---
+
+### **3. Command Authorization Levels**
+
+| Action Type | Authorization Required | Logging Level |
+|-------------|----------------------|---------------|
+| **View Data** | Single token | Standard |
+| **Change Setpoint** | Single token + validation | Enhanced |
+| **Execute Breaker** | Two-person verification (CRITICAL only) | Full audit |
+| **Emergency Override** | Token + supervisor approval | Real-time + video |
+| **Admin Changes** | Change management ticket + approval | Full audit |
+
+---
+
+### **4. Anomaly Detection Triggers**
+
+#### **Behavioral Anomalies**
+- Token accessed from new device
+- Unusual command sequence (e.g., rapid setpoint changes)
+- Access to systems outside normal scope
+- Multiple systems accessed in short time
+- Failed authentication attempts (3+ in 5 minutes)
+
+#### **Technical Anomalies**
+- Token cloning detected (same token, multiple IPs)
+- Privilege escalation attempt
+- New token created without proper approval
+- Database schema changes
+- Network configuration modifications
+
+#### **Operational Anomalies**
+- Emergency override without logged incident
+- Load changes during unusual hours
+- Breaker operations without maintenance window
+- Critical system accessed during off-hours
+
+---
+
+## Attack Surface Analysis
+
+### 🎯 **High-Value Token Targets**
+1. **T8-PSE-SCADA-CHIEF-001** (David Chen)
+   - **Risk:** Complete system control
+   - **Attack Vector:** Spear phishing, credential theft
+   - **Impact:** Grid-wide outage possible
+
+2. **T8-PSE-IT-ADMIN-004** (Sarah Kim)
+   - **Risk:** Can create fake tokens
+   - **Attack Vector:** Social engineering, malware
+   - **Impact:** Persistent backdoor access
+
+3. **T8-PSE-SCADA-SUPER-020** (Laura Martinez)
+   - **Risk:** Emergency override capability
+   - **Attack Vector:** Shift handoff compromise
+   - **Impact:** Safety system bypass
+
+4. **T8-PSE-IT-DBA-010** (Linda Martinez)
+   - **Risk:** Can alter audit logs
+   - **Attack Vector:** Database injection
+   - **Impact:** Hide malicious activity
+
+---
+
+### 🔓 **Privilege Escalation Paths**
+
+#### **Path 1: IT → SCADA**
+```
+Compromise IT-ADMIN → Create fake SCADA-CHIEF token → Full control
+Detection: Monitor token creation events
+```
+
+#### **Path 2: Operator → Senior**
+```
+Steal OP token → Expand scope gradually → Mimic SR behavior
+Detection: Monitor unusual sector access patterns
+```
+
+#### **Path 3: Field → Remote**
+```
+Compromise FIELD-TECH → Install rogue RTU → Remote backdoor
+Detection: Monitor new device registrations
+```
+
+#### **Path 4: Database Manipulation**
+```
+Compromise IT-DBA → Alter permissions table → Grant own token higher access
+Detection: Monitor database schema changes
+```
+
+---
+
+## HIL Integration Points
+
+### **Automatic HIL Triggers**
+1. ✅ Any CRITICAL token used outside normal patterns
+2. ✅ IT token attempting SCADA execution
+3. ✅ New token created without approval workflow
+4. ✅ Emergency override activated
+5. ✅ 3+ anomalies from same token in 1 hour
+6. ✅ Database permission changes
+7. ✅ Failed authentication spike (5+ in 10 min)
+
+### **HIL Response Options**
+```
+1. ALLOW - Approve action + log justification
+2. DENY - Block action + alert security team
+3. INVESTIGATE - Pause action + require additional verification
+4. REVOKE - Disable token immediately + force re-authentication
+```
+
+### **Escalation Hierarchy**
+```
+Level 1 Alert → Shift Supervisor review (PSE-020)
+Level 2 Alert → Chief SCADA Engineer review (PSE-001)
+Level 3 Alert → Security team + Management notification
+Level 4 Alert → Emergency response + system lockdown
+```
+
+---
+
+## Implementation Code Snippets
+
+### **Token Validation Function**
+```javascript
+function validateTokenAccess(token, system, action) {
+  const tokenData = getTokenFromDB(token);
+  
+  // Check basic permissions
+  if (!tokenData.permissions[action]) {
+    return {
+      allowed: false,
+      reason: "Insufficient permission level",
+      hil_required: false
+    };
+  }
+  
+  // Check system scope
+  if (!tokenData.access_systems.includes(system)) {
+    logAnomaly(token, "Out of scope access", system);
+    return {
+      allowed: false,
+      reason: "System not in token scope",
+      hil_required: true
+    };
+  }
+  
+  // Check time restrictions
+  if (!isWithinAllowedTime(tokenData)) {
+    logAnomaly(token, "After-hours access", system);
+    return {
+      allowed: false,
+      reason: "Outside allowed time window",
+      hil_required: true
+    };
+  }
+  
+  // Check for anomalies
+  const anomalies = detectAnomalies(token, system, action);
+  if (anomalies.length > 0) {
+    return {
+      allowed: false,
+      reason: "Anomalous behavior detected",
+      hil_required: true,
+      anomalies: anomalies
+    };
+  }
+  
+  return {
+    allowed: true,
+    hil_required: false
+  };
+}
+```
+
+### **HIL Alert Generation**
+```javascript
+function generateHILAlert(token, system, action, reason) {
+  const alert = {
+    alert_id: generateAlertID(),
+    timestamp: new Date().toISOString(),
+    token: token,
+    employee: getEmployeeFromToken(token),
+    system: system,
+    action: action,
+    reason: reason,
+    risk_level: calculateRiskLevel(token, system),
+    recommended_action: getRecommendation(reason)
+  };
+  
+  sendToHILPanel(alert);
+  logAuditTrail(alert);
+  
+  if (alert.risk_level === "CRITICAL") {
+    notifySecurityTeam(alert);
+  }
+  
+  return alert;
+}
+```
+
+{
+  "organization": "Puget Sound Energy (PSE)",
+  "data_generated": "2025-11-06",
+  "total_employees": 20,
+  "employees": [
+    {
+      "employee_id": "PSE-001",
+      "name": "David Chen",
+      "title": "Chief SCADA Engineer",
+      "department": "Grid Operations",
+      "location": "Bellevue Control Center",
+      "years_experience": 15,
+      "clearance_level": "CRITICAL",
+      "token": "T8-PSE-SCADA-CHIEF-001",
+      "direct_reports": ["PSE-002", "PSE-003", "PSE-004"],
+      "reports_to": "EXEC-001",
+      "devices_controlled": [
+        "Wild Horse Wind Farm SCADA",
+        "Hopkins Ridge Wind Farm SCADA", 
+        "All Substation RTUs",
+        "Master SCADA System",
+        "Backup Control Systems"
+      ],
+      "access_systems": [
+        "Siemens Spectrum Power 7",
+        "ABB MicroSCADA",
+        "GE e-terradistribution",
+        "Emergency Shutdown Systems"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": true,
+        "admin": true,
+        "emergency_override": true
+      }
+    },
+    {
+      "employee_id": "PSE-002",
+      "name": "Maria Rodriguez",
+      "title": "Senior SCADA Operator",
+      "department": "Grid Operations",
+      "location": "Bellevue Control Center",
+      "years_experience": 10,
+      "clearance_level": "CRITICAL",
+      "token": "T8-PSE-SCADA-SR-002",
+      "direct_reports": ["PSE-005", "PSE-006"],
+      "reports_to": "PSE-001",
+      "devices_controlled": [
+        "Wild Horse Wind Farm Turbines (149 units)",
+        "Substation Breakers (Zones 1-3)",
+        "Load Distribution Switches"
+      ],
+      "access_systems": [
+        "Siemens Spectrum Power 7",
+        "Real-Time Monitoring Dashboard",
+        "Turbine Control Interface"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": true,
+        "admin": false,
+        "emergency_override": true
+      }
+    },
+    {
+      "employee_id": "PSE-003",
+      "name": "James Patterson",
+      "title": "Senior SCADA Operator",
+      "department": "Grid Operations", 
+      "location": "Bellevue Control Center",
+      "years_experience": 12,
+      "clearance_level": "CRITICAL",
+      "token": "T8-PSE-SCADA-SR-003",
+      "direct_reports": ["PSE-007", "PSE-008"],
+      "reports_to": "PSE-001",
+      "devices_controlled": [
+        "Hopkins Ridge Wind Farm Turbines (83 units)",
+        "Substation Breakers (Zones 4-6)",
+        "Voltage Regulators"
+      ],
+      "access_systems": [
+        "Siemens Spectrum Power 7",
+        "Real-Time Monitoring Dashboard",
+        "Voltage Control Systems"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": true,
+        "admin": false,
+        "emergency_override": true
+      }
+    },
+    {
+      "employee_id": "PSE-004",
+      "name": "Sarah Kim",
+      "title": "SCADA Systems Administrator",
+      "department": "IT Infrastructure",
+      "location": "Bellevue Control Center",
+      "years_experience": 8,
+      "clearance_level": "HIGH",
+      "token": "T8-PSE-IT-ADMIN-004",
+      "direct_reports": ["PSE-009", "PSE-010"],
+      "reports_to": "PSE-001",
+      "devices_controlled": [
+        "SCADA Network Infrastructure",
+        "Authentication Servers",
+        "Backup Systems"
+      ],
+      "access_systems": [
+        "Active Directory",
+        "Network Management Tools",
+        "SCADA Database Servers",
+        "Firewall Management"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": false,
+        "admin": true,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-005",
+      "name": "Robert Taylor",
+      "title": "SCADA Operator",
+      "department": "Grid Operations",
+      "location": "Bellevue Control Center",
+      "years_experience": 5,
+      "clearance_level": "HIGH",
+      "token": "T8-PSE-SCADA-OP-005",
+      "direct_reports": [],
+      "reports_to": "PSE-002",
+      "devices_controlled": [
+        "Wild Horse Wind Farm Sectors A-C",
+        "Substation Breakers (Zone 1)",
+        "Load Monitoring Systems"
+      ],
+      "access_systems": [
+        "Siemens Spectrum Power 7 (Read/Write)",
+        "Shift Operations Dashboard"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": true,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-006",
+      "name": "Emily Nguyen",
+      "title": "SCADA Operator",
+      "department": "Grid Operations",
+      "location": "Bellevue Control Center",
+      "years_experience": 6,
+      "clearance_level": "HIGH",
+      "token": "T8-PSE-SCADA-OP-006",
+      "direct_reports": [],
+      "reports_to": "PSE-002",
+      "devices_controlled": [
+        "Wild Horse Wind Farm Sectors D-F",
+        "Substation Breakers (Zone 2-3)",
+        "Capacitor Banks"
+      ],
+      "access_systems": [
+        "Siemens Spectrum Power 7 (Read/Write)",
+        "Shift Operations Dashboard"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": true,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-007",
+      "name": "Michael Johnson",
+      "title": "SCADA Operator",
+      "department": "Grid Operations",
+      "location": "Bellevue Control Center",
+      "years_experience": 4,
+      "clearance_level": "HIGH",
+      "token": "T8-PSE-SCADA-OP-007",
+      "direct_reports": [],
+      "reports_to": "PSE-003",
+      "devices_controlled": [
+        "Hopkins Ridge Wind Farm Sectors A-D",
+        "Substation Breakers (Zone 4-5)",
+        "Transformer Load Tap Changers"
+      ],
+      "access_systems": [
+        "Siemens Spectrum Power 7 (Read/Write)",
+        "Shift Operations Dashboard"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": true,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-008",
+      "name": "Jessica Lee",
+      "title": "SCADA Operator",
+      "department": "Grid Operations",
+      "location": "Bellevue Control Center",
+      "years_experience": 7,
+      "clearance_level": "HIGH",
+      "token": "T8-PSE-SCADA-OP-008",
+      "direct_reports": [],
+      "reports_to": "PSE-003",
+      "devices_controlled": [
+        "Hopkins Ridge Wind Farm Sectors E-F",
+        "Substation Breakers (Zone 6)",
+        "Reactive Power Controllers"
+      ],
+      "access_systems": [
+        "Siemens Spectrum Power 7 (Read/Write)",
+        "Shift Operations Dashboard"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": true,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-009",
+      "name": "Andrew Wilson",
+      "title": "Network Security Engineer",
+      "department": "IT Infrastructure",
+      "location": "Bellevue Control Center",
+      "years_experience": 6,
+      "clearance_level": "HIGH",
+      "token": "T8-PSE-IT-SEC-009",
+      "direct_reports": [],
+      "reports_to": "PSE-004",
+      "devices_controlled": [
+        "IDS/IPS Systems",
+        "Security Information Event Management (SIEM)",
+        "Access Control Lists"
+      ],
+      "access_systems": [
+        "Firewall Configuration",
+        "VPN Management",
+        "Network Monitoring Tools",
+        "Security Audit Logs"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": false,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-010",
+      "name": "Linda Martinez",
+      "title": "Database Administrator",
+      "department": "IT Infrastructure",
+      "location": "Bellevue Control Center",
+      "years_experience": 9,
+      "clearance_level": "HIGH",
+      "token": "T8-PSE-IT-DBA-010",
+      "direct_reports": [],
+      "reports_to": "PSE-004",
+      "devices_controlled": [
+        "SCADA Historian Database",
+        "Real-Time Data Servers",
+        "Backup Storage Systems"
+      ],
+      "access_systems": [
+        "SQL Server Management",
+        "Oracle Database Admin",
+        "Data Replication Systems"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": false,
+        "admin": true,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-011",
+      "name": "Thomas Brown",
+      "title": "Field Substation Technician",
+      "department": "Field Operations",
+      "location": "Wild Horse Wind Farm",
+      "years_experience": 11,
+      "clearance_level": "MEDIUM",
+      "token": "T8-PSE-FIELD-TECH-011",
+      "direct_reports": ["PSE-015", "PSE-016"],
+      "reports_to": "PSE-002",
+      "devices_controlled": [
+        "Wild Horse Substation Equipment",
+        "On-site Protection Relays",
+        "Local HMI Terminals"
+      ],
+      "access_systems": [
+        "Local SCADA Terminal (Read-Only)",
+        "Maintenance Management System",
+        "Equipment Diagnostic Tools"
+      ],
+      "permissions": {
+        "read": true,
+        "write": false,
+        "execute": false,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-012",
+      "name": "Patricia Davis",
+      "title": "Field Substation Technician",
+      "department": "Field Operations",
+      "location": "Hopkins Ridge Wind Farm",
+      "years_experience": 9,
+      "clearance_level": "MEDIUM",
+      "token": "T8-PSE-FIELD-TECH-012",
+      "direct_reports": ["PSE-017", "PSE-018"],
+      "reports_to": "PSE-003",
+      "devices_controlled": [
+        "Hopkins Ridge Substation Equipment",
+        "On-site Protection Relays",
+        "Local HMI Terminals"
+      ],
+      "access_systems": [
+        "Local SCADA Terminal (Read-Only)",
+        "Maintenance Management System",
+        "Equipment Diagnostic Tools"
+      ],
+      "permissions": {
+        "read": true,
+        "write": false,
+        "execute": false,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-013",
+      "name": "Christopher Garcia",
+      "title": "Protection & Control Engineer",
+      "department": "Engineering",
+      "location": "Bellevue Engineering Office",
+      "years_experience": 13,
+      "clearance_level": "HIGH",
+      "token": "T8-PSE-ENG-PC-013",
+      "direct_reports": ["PSE-019"],
+      "reports_to": "PSE-001",
+      "devices_controlled": [
+        "Protection Relay Settings",
+        "Substation Automation Systems",
+        "Breaker Control Logic"
+      ],
+      "access_systems": [
+        "SEL Protection Relay Programming",
+        "Substation Configuration Tools",
+        "Testing & Commissioning Systems"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": false,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-014",
+      "name": "Jennifer White",
+      "title": "Renewable Energy Analyst",
+      "department": "Grid Operations",
+      "location": "Bellevue Control Center",
+      "years_experience": 5,
+      "clearance_level": "MEDIUM",
+      "token": "T8-PSE-ANALYST-014",
+      "direct_reports": [],
+      "reports_to": "PSE-002",
+      "devices_controlled": [
+        "Wind Forecast Systems",
+        "Generation Scheduling Tools"
+      ],
+      "access_systems": [
+        "SCADA Dashboard (Read-Only)",
+        "Weather Forecasting Systems",
+        "Power Generation Analytics"
+      ],
+      "permissions": {
+        "read": true,
+        "write": false,
+        "execute": false,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-015",
+      "name": "Daniel Moore",
+      "title": "Wind Turbine Technician",
+      "department": "Field Operations",
+      "location": "Wild Horse Wind Farm",
+      "years_experience": 4,
+      "clearance_level": "LOW",
+      "token": "T8-PSE-FIELD-MAINT-015",
+      "direct_reports": [],
+      "reports_to": "PSE-011",
+      "devices_controlled": [
+        "Individual Turbine Control Panels",
+        "Turbine Safety Systems"
+      ],
+      "access_systems": [
+        "Turbine HMI (Local Only)",
+        "Maintenance Logs System"
+      ],
+      "permissions": {
+        "read": true,
+        "write": false,
+        "execute": false,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-016",
+      "name": "Nancy Thompson",
+      "title": "Wind Turbine Technician",
+      "department": "Field Operations",
+      "location": "Wild Horse Wind Farm",
+      "years_experience": 3,
+      "clearance_level": "LOW",
+      "token": "T8-PSE-FIELD-MAINT-016",
+      "direct_reports": [],
+      "reports_to": "PSE-011",
+      "devices_controlled": [
+        "Individual Turbine Control Panels",
+        "Turbine Safety Systems"
+      ],
+      "access_systems": [
+        "Turbine HMI (Local Only)",
+        "Maintenance Logs System"
+      ],
+      "permissions": {
+        "read": true,
+        "write": false,
+        "execute": false,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-017",
+      "name": "Kevin Anderson",
+      "title": "Wind Turbine Technician",
+      "department": "Field Operations",
+      "location": "Hopkins Ridge Wind Farm",
+      "years_experience": 5,
+      "clearance_level": "LOW",
+      "token": "T8-PSE-FIELD-MAINT-017",
+      "direct_reports": [],
+      "reports_to": "PSE-012",
+      "devices_controlled": [
+        "Individual Turbine Control Panels",
+        "Turbine Safety Systems"
+      ],
+      "access_systems": [
+        "Turbine HMI (Local Only)",
+        "Maintenance Logs System"
+      ],
+      "permissions": {
+        "read": true,
+        "write": false,
+        "execute": false,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-018",
+      "name": "Karen Thomas",
+      "title": "Wind Turbine Technician",
+      "department": "Field Operations",
+      "location": "Hopkins Ridge Wind Farm",
+      "years_experience": 6,
+      "clearance_level": "LOW",
+      "token": "T8-PSE-FIELD-MAINT-018",
+      "direct_reports": [],
+      "reports_to": "PSE-012",
+      "devices_controlled": [
+        "Individual Turbine Control Panels",
+        "Turbine Safety Systems"
+      ],
+      "access_systems": [
+        "Turbine HMI (Local Only)",
+        "Maintenance Logs System"
+      ],
+      "permissions": {
+        "read": true,
+        "write": false,
+        "execute": false,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-019",
+      "name": "Steven Jackson",
+      "title": "Junior Protection Engineer",
+      "department": "Engineering",
+      "location": "Bellevue Engineering Office",
+      "years_experience": 2,
+      "clearance_level": "MEDIUM",
+      "token": "T8-PSE-ENG-JR-019",
+      "direct_reports": [],
+      "reports_to": "PSE-013",
+      "devices_controlled": [
+        "Protection Relay Testing Equipment",
+        "Simulation Tools"
+      ],
+      "access_systems": [
+        "SCADA Dashboard (Read-Only)",
+        "Protection Relay Programming (Supervised)"
+      ],
+      "permissions": {
+        "read": true,
+        "write": false,
+        "execute": false,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-020",
+      "name": "Laura Martinez",
+      "title": "Operations Shift Supervisor",
+      "department": "Grid Operations",
+      "location": "Bellevue Control Center",
+      "years_experience": 14,
+      "clearance_level": "CRITICAL",
+      "token": "T8-PSE-SCADA-SUPER-020",
+      "direct_reports": ["PSE-005", "PSE-006", "PSE-007", "PSE-008"],
+      "reports_to": "PSE-001",
+      "devices_controlled": [
+        "All Grid Operations During Shift",
+        "Emergency Response Systems",
+        "Load Shedding Controls"
+      ],
+      "access_systems": [
+        "Siemens Spectrum Power 7",
+        "Emergency Management System",
+        "Shift Supervisor Override Console"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": true,
+        "admin": false,
+        "emergency_override": true
+      }
+    }
+  ]
+}
+
+# PSE Token Design Data Package
+# Puget Sound Energy - 员工权限系统数据包
+
+**项目**: Team 8 - Energy Infrastructure Attack Simulation  
+**用途**: Demo 3 - Token-Based RBAC System  
+**生成日期**: 2025-11-06
+
+---
+
+## 📦 数据包内容
+
+| 文件名 | 类型 | 描述 |
+|--------|------|------|
+| `pse_employees_data.json` | JSON | 20个PSE员工的完整数据，包含设备控制权限 |
+| `token_permission_mapping.md` | Markdown | Token结构说明和权限映射表 |
+| `organization_chart.md` | Markdown | 组织架构图（人员逻辑图） |
+| `permission_logic_diagram.md` | Markdown | 权限逻辑图和访问控制流程 |
+| `README.md` | Markdown | 本文件 - 使用说明 |
+
+---
+
+## 🎯 核心功能
+
+### 1. **真实员工数据** (`pse_employees_data.json`)
+- ✅ 20个真实可操控设备的PSE运营员工
+- ✅ 基于真实职位（Chief SCADA Engineer, Senior Operator等）
+- ✅ 包含实际设备控制权限（Wild Horse/Hopkins Ridge风电场）
+- ✅ 完整的token结构 (T8-PSE-[DEPT]-[ROLE]-[ID])
+- ✅ 分层权限系统（CRITICAL → HIGH → MEDIUM → LOW）
+
+### 2. **Token权限映射** (`token_permission_mapping.md`)
+- Token结构格式说明
+- 权限矩阵（Read/Write/Execute/Admin/Override）
+- 设备访问级别定义
+- 攻击场景示例
+- HIL触发规则
+
+### 3. **组织架构** (`organization_chart.md`)
+- Mermaid图表展示报告关系
+- 按部门分类的员工列表
+- 指挥链和委托规则
+- 高价值目标(HVT)分析
+- 权限提升路径
+
+### 4. **权限逻辑** (`permission_logic_diagram.md`)
+- Token→系统访问的可视化流程
+- 访问控制决策树
+- 异常检测规则
+- HIL集成点
+- 代码实现示例
+
+---
+
+## 🚀 快速开始
+
+### **查看员工数据**
+```bash
+# 在任何支持JSON的环境中打开
+cat pse_employees_data.json
+
+# 或使用在线JSON查看器
+# https://jsonviewer.stack.hu/
+```
+
+### **查看可视化图表**
+所有 `.md` 文件中的Mermaid图表可以在以下环境中渲染：
+- ✅ GitHub (自动渲染)
+- ✅ VS Code (安装 Mermaid Preview 插件)
+- ✅ Obsidian
+- ✅ 在线工具: https://mermaid.live/
+
+### **在Demo中使用**
+```javascript
+// 加载员工数据
+fetch('pse_employees_data.json')
+  .then(response => response.json())
+  .then(data => {
+    console.log(`Loaded ${data.total_employees} employees`);
+    // 使用 data.employees 数组
+  });
+
+// Token验证示例
+function validateToken(token) {
+  const pattern = /^T8-PSE-(SCADA|IT|FIELD|ENG|ANALYST)-(CHIEF|SR|SUPER|OP|ADMIN|SEC|DBA|PC|TECH|JR|MAINT)-\d{3}$/;
+  return pattern.test(token);
+}
+
+// 示例token
+const validTokens = [
+  "T8-PSE-SCADA-CHIEF-001",  // David Chen - 完全控制
+  "T8-PSE-SCADA-OP-006",     // Emily Nguyen - 扇区控制
+  "T8-PSE-IT-ADMIN-004",     // Sarah Kim - IT管理员
+  "T8-PSE-FIELD-MAINT-015"   // Daniel Moore - 现场维护
+];
+```
+
+---
+
+## 📊 数据统计
+
+### **人员分布**
+```
+🔴 CRITICAL (4人):  完全系统控制 + 紧急覆盖
+🟠 HIGH (8人):      操作控制 / IT基础设施
+🟡 MEDIUM (5人):    监控 / 现场支持
+🟢 LOW (4人):       本地维护
+────────────────
+   总计: 20人 + 1个高管 = 21个职位
+```
+
+### **部门分布**
+```
+Grid Operations:  9人 (包括4个CRITICAL)
+IT Infrastructure: 3人 (全部HIGH)
+Engineering:      2人
+Field Ops (WH):   3人
+Field Ops (HR):   3人
+```
+
+### **设备控制能力**
+```
+Wild Horse风电场:     149台涡轮机
+Hopkins Ridge风电场:  83台涡轮机
+变电站RTU:           全网格覆盖
+紧急关闭系统:         4人可访问
+主SCADA系统:         9人有权限
+```
+
+---
+
+## 🎭 Demo 3 应用场景
+
+### **场景1: 正常操作流程**
+```
+用户登录: T8-PSE-SCADA-OP-006 (Emily Nguyen)
+系统验证: ✅ Token有效
+权限检查: ✅ 可以控制Wild Horse扇区D-F
+时间检查: ✅ 在班次时间内
+操作执行: ✅ 调整涡轮机参数
+审计日志: ✅ 记录所有操作
+```
+
+### **场景2: 钓鱼攻击模拟**
+```
+攻击者目标: Emily Nguyen (PSE-006)
+发送钓鱼邮件: "系统升级需要验证token"
+如果成功: 获取 T8-PSE-SCADA-OP-006
+攻击者能力: 控制Wild Horse扇区D-F (约50台涡轮机)
+HIL检测: 异常登录位置触发警报
+```
+
+### **场景3: 权限提升攻击**
+```
+攻击者获取: T8-PSE-IT-ADMIN-004 (Sarah Kim)
+正常权限: ✅ 网络管理, ❌ SCADA控制
+攻击行动: 尝试创建假的SCADA-CHIEF token
+HIL触发: ⚠️ 未授权的token创建检测
+系统响应: 暂停操作 + 需要人工审查
+```
+
+### **场景4: 内部威胁**
+```
+内部人员: Thomas Brown (PSE-011) - Field Technician
+正常权限: 🟡 现场设备只读访问
+恶意行动: 物理安装恶意RTU设备
+检测方式: 网络监控发现新设备注册
+HIL响应: 警报 + 要求现场验证
+```
+
+---
+
+## 🔐 Token设计特点
+
+### **分层安全模型**
+```
+CRITICAL → 可以做一切（包括紧急覆盖）
+HIGH     → 操作控制或IT管理（分离职责）
+MEDIUM   → 监控和有限的现场访问
+LOW      → 仅本地物理访问
+```
+
+### **职责分离**
+```
+SCADA操作人员 ≠ IT管理员
+- SCADA人员: 控制设备，无IT权限
+- IT管理员: 管理网络，无设备控制权
+- 攻击者必须分别攻破两个系统
+```
+
+### **地理限制**
+```
+Control Center (Bellevue): CRITICAL + HIGH SCADA人员
+Wind Farms (现场): FIELD人员
+Engineering Office: ENG人员
+```
+
+### **时间限制**
+```
+SCADA-OP: 8小时班次窗口
+SCADA-SUPER: 24/7 (但分配到班次)
+FIELD: 工作时间 (06:00-18:00)
+```
+
+---
+
+## 📈 为Demo 3准备的展示点
+
+### **1. Login/Token Gate**
+```javascript
+// 展示不同token登录
+const demoTokens = {
+  engineer: "T8-PSE-SCADA-CHIEF-001",    // 展示完全控制
+  operator: "T8-PSE-SCADA-OP-006",       // 展示扇区限制
+  attacker: "T8-PSE-IT-ADMIN-004",       // 展示权限提升尝试
+  field: "T8-PSE-FIELD-TECH-011"         // 展示现场访问
+};
+```
+
+### **2. Recon阶段**
+- 展示员工LinkedIn数据 → 识别高价值目标
+- 显示组织架构图 → 找到权限路径
+- 分析token模式 → 理解命名规则
+
+### **3. Phishing阶段**
+- 目标选择: Emily Nguyen (可控制50台涡轮机)
+- 邮件内容: "SCADA系统升级，请验证token"
+- 成功率预测: 基于角色和经验
+
+### **4. HIL Panel**
+- 实时检测异常token行为
+- 展示不同触发级别
+- 演示人工覆盖决策
+
+### **5. Evaluation**
+```
+Iteration 1 (无HIL):
+  - 攻击成功率: 85%
+  - 检测时间: 4小时
+  
+Iteration 2 (有HIL):
+  - 攻击成功率: 15%
+  - 检测时间: 2分钟
+```
+
+### **6. Integration**
+- 展示token如何映射到实际SCADA命令
+- 演示sandbox环境中的安全测试
+- 显示真实设备接口（模拟）
+
+---
+
+## 🛠️ 技术实现建议
+
+### **数据库Schema**
+```sql
+CREATE TABLE tokens (
+    token_id VARCHAR(50) PRIMARY KEY,
+    employee_id VARCHAR(20),
+    clearance_level ENUM('CRITICAL', 'HIGH', 'MEDIUM', 'LOW'),
+    permissions JSON,
+    access_systems JSON,
+    active BOOLEAN,
+    created_at TIMESTAMP,
+    last_used TIMESTAMP
+);
+
+CREATE TABLE access_logs (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    token_id VARCHAR(50),
+    system VARCHAR(100),
+    action VARCHAR(50),
+    timestamp TIMESTAMP,
+    ip_address VARCHAR(45),
+    success BOOLEAN,
+    hil_triggered BOOLEAN
+);
+```
+
+### **前端展示**
+```html
+<!-- Token输入框 -->
+<input 
+  type="text" 
+  pattern="T8-PSE-(SCADA|IT|FIELD|ENG|ANALYST)-(CHIEF|SR|SUPER|OP|ADMIN|SEC|DBA|PC|TECH|JR|MAINT)-\d{3}"
+  placeholder="T8-PSE-SCADA-OP-001"
+/>
+
+<!-- 权限显示 -->
+<div class="permission-badge" data-level="CRITICAL">
+  🔴 CRITICAL ACCESS
+</div>
+```
+
+### **API端点**
+```javascript
+// 验证token
+POST /api/auth/validate
+{
+  "token": "T8-PSE-SCADA-OP-006",
+  "system": "Wild Horse SCADA",
+  "action": "write"
+}
+
+// 响应
+{
+  "valid": true,
+  "employee": "Emily Nguyen",
+  "clearance": "HIGH",
+  "permissions": {...},
+  "hil_required": false
+}
+```
+
+---
+
+## 🎓 教育价值
+
+这个数据集展示了：
+
+1. ✅ **现实主义** - 基于真实能源公司结构
+2. ✅ **复杂性** - 多层权限，职责分离
+3. ✅ **可防御性** - HIL检查点，异常检测
+4. ✅ **攻击面** - 清晰的HVT和攻击路径
+5. ✅ **可测量性** - 量化的权限级别和访问范围
+
+---
+
+## 📞 使用支持
+
+### **常见问题**
+
+**Q: 如何在Demo中使用这些数据？**  
+A: 将JSON文件导入你的前端，使用fetch或import。Token验证可以在客户端模拟。
+
+**Q: Mermaid图表不显示怎么办？**  
+A: 使用 https://mermaid.live/ 在线渲染，或在VS Code中安装Mermaid插件。
+
+**Q: 需要真实的SCADA系统吗？**  
+A: 不需要！这是模拟数据，用于展示token逻辑。可以用模拟API响应。
+
+**Q: 如何展示HIL功能？**  
+A: 使用`permission_logic_diagram.md`中的代码示例创建检测规则。
+
+**Q: Token格式可以改吗？**  
+A: 可以！但保持`T8-PSE-[DEPT]-[ROLE]-[ID]`结构便于演示RBAC逻辑。
+
+---
+
+## 📝 引用来源
+
+本数据集基于真实参考资料创建：
+
+1. **PSE Leadership**: https://www.pse.com/en/about-us/leadership
+2. **Wind Farms**: Wild Horse (149 turbines), Hopkins Ridge (83 turbines)
+3. **SCADA Systems**: Siemens Spectrum Power 7, ABB MicroSCADA
+4. **Job Roles**: Based on ZipRecruiter SCADA operator postings
+5. **Security Standards**: NERC CIP (North American Electric Reliability Corporation)
+
+---
+
+## ✅ Checklist for Demo 3
+
+- [ ] 导入`pse_employees_data.json`到项目
+- [ ] 实现token验证逻辑
+- [ ] 创建权限检查函数
+- [ ] 添加组织架构图到演示文档
+- [ ] 展示权限逻辑流程
+- [ ] 准备钓鱼场景演示（Emily Nguyen）
+- [ ] 设置HIL警报示例
+- [ ] 创建Iteration 1 vs 2对比
+- [ ] 测试所有4个demo token
+
+---
+
+**祝Demo顺利! 🚀**
+
+如有问题，参考各个markdown文件中的详细说明和代码示例。
+
+# PSE Token Structure and Permission Mapping
+
+## Token Structure Format
+
+```
+T8-PSE-[DEPT]-[ROLE]-[ID]
+```
+
+### Token Components Breakdown:
+
+| Component | Description | Example Values |
+|-----------|-------------|----------------|
+| **T8** | Team/Project Identifier | T8 (固定) |
+| **PSE** | Organization Code | PSE (Puget Sound Energy) |
+| **DEPT** | Department/System | SCADA, IT, FIELD, ENG, ANALYST |
+| **ROLE** | Role Level | CHIEF, SR (Senior), OP (Operator), ADMIN, TECH, MAINT, etc. |
+| **ID** | Unique Employee ID | 001-020 |
+
+---
+
+## Token Permission Matrix
+
+| Token Pattern | Clearance Level | Read | Write | Execute | Admin | Emergency Override | Device Access Level |
+|---------------|----------------|------|-------|---------|-------|-------------------|---------------------|
+| `T8-PSE-SCADA-CHIEF-XXX` | CRITICAL | ✅ | ✅ | ✅ | ✅ | ✅ | **Full Control** - All SCADA systems, master controls, emergency shutdown |
+| `T8-PSE-SCADA-SR-XXX` | CRITICAL | ✅ | ✅ | ✅ | ❌ | ✅ | **Operational Control** - Wind farms, substations, load distribution |
+| `T8-PSE-SCADA-SUPER-XXX` | CRITICAL | ✅ | ✅ | ✅ | ❌ | ✅ | **Shift Control** - All grid operations during shift, emergency response |
+| `T8-PSE-SCADA-OP-XXX` | HIGH | ✅ | ✅ | ✅ | ❌ | ❌ | **Sector Control** - Specific wind farm sectors, designated substations |
+| `T8-PSE-IT-ADMIN-XXX` | HIGH | ✅ | ✅ | ❌ | ✅ | ❌ | **Network Infrastructure** - Authentication, servers, backups (no device execution) |
+| `T8-PSE-IT-SEC-XXX` | HIGH | ✅ | ✅ | ❌ | ❌ | ❌ | **Security Systems** - IDS/IPS, SIEM, firewalls, access logs |
+| `T8-PSE-IT-DBA-XXX` | HIGH | ✅ | ✅ | ❌ | ✅ | ❌ | **Database Systems** - SCADA historian, real-time data servers |
+| `T8-PSE-ENG-PC-XXX` | HIGH | ✅ | ✅ | ❌ | ❌ | ❌ | **Protection Systems** - Relay settings, automation systems, breaker logic |
+| `T8-PSE-FIELD-TECH-XXX` | MEDIUM | ✅ | ❌ | ❌ | ❌ | ❌ | **Field Equipment** - Substation equipment, local HMI (read-only remote) |
+| `T8-PSE-ENG-JR-XXX` | MEDIUM | ✅ | ❌ | ❌ | ❌ | ❌ | **Testing Tools** - Relay testing, simulations (supervised access) |
+| `T8-PSE-ANALYST-XXX` | MEDIUM | ✅ | ❌ | ❌ | ❌ | ❌ | **Analytics Systems** - Forecasting, scheduling, dashboards (read-only) |
+| `T8-PSE-FIELD-MAINT-XXX` | LOW | ✅ | ❌ | ❌ | ❌ | ❌ | **Local Turbine HMI** - Individual turbine panels (on-site only) |
+
+---
+
+## Permission Definitions
+
+### **READ Permission**
+- View real-time data and system status
+- Access dashboards and monitoring screens
+- View historical logs and reports
+
+### **WRITE Permission**
+- Modify setpoints and parameters
+- Update configurations
+- Change operational modes
+
+### **EXECUTE Permission**
+- Send control commands to devices
+- Start/stop equipment
+- Switch breakers and control turbines
+- Execute load shedding or restoration
+
+### **ADMIN Permission**
+- User account management
+- System configuration changes
+- Network and infrastructure modifications
+- Database schema changes
+
+### **EMERGENCY OVERRIDE Permission**
+- Bypass normal operational procedures
+- Execute emergency shutdown
+- Override automated safety systems
+- Restore service during critical outages
+
+---
+
+## Critical System Access by Token Type
+
+### 🔴 **CRITICAL Level Tokens** (Full Operational Control)
+**Tokens:** CHIEF, SR, SUPER
+- **Wild Horse Wind Farm SCADA** - All 149 turbines
+- **Hopkins Ridge Wind Farm SCADA** - All 83 turbines  
+- **Master SCADA System** - Siemens Spectrum Power 7
+- **All Substation RTUs** - Remote Terminal Units across grid
+- **Emergency Systems** - Shutdown and restoration controls
+- **Load Distribution** - Grid balancing and switching
+
+### 🟠 **HIGH Level Tokens** (Limited Operational / Full IT)
+**Tokens:** OP, IT-ADMIN, IT-SEC, IT-DBA, ENG-PC
+- **Sector-Specific SCADA** - Designated wind farm sectors only
+- **Network Infrastructure** - Authentication, security, databases
+- **Protection Systems** - Relay programming and testing
+- **Monitoring Systems** - IDS/IPS, SIEM, firewalls
+
+### 🟡 **MEDIUM Level Tokens** (Monitoring / Field Support)
+**Tokens:** FIELD-TECH, ENG-JR, ANALYST
+- **Read-Only SCADA** - Dashboards and status monitoring
+- **Local Field Equipment** - On-site HMI terminals
+- **Analytics Tools** - Forecasting and reporting systems
+- **Testing Equipment** - Supervised relay testing
+
+### 🟢 **LOW Level Tokens** (Local Maintenance Only)
+**Tokens:** FIELD-MAINT
+- **Individual Turbine HMI** - Local control panels only
+- **Maintenance Logging** - Equipment status updates
+- **No Remote Access** - On-site physical access only
+
+---
+
+## Token-Based Access Control Rules
+
+### 1. **Geographic Restrictions**
+```
+FIELD tokens → Can only access local equipment on-site
+SCADA/IT tokens → Remote access from control center
+```
+
+### 2. **Time-Based Access**
+```
+SCADA-OP tokens → Shift-based access (8-hour windows)
+SCADA-SUPER tokens → 24/7 access with shift responsibility
+FIELD tokens → Business hours (6 AM - 6 PM)
+```
+
+### 3. **Multi-Factor Authentication Requirements**
+```
+CRITICAL tokens → Biometric + Token + PIN
+HIGH tokens → Token + PIN  
+MEDIUM/LOW tokens → Token only
+```
+
+### 4. **Command Authorization**
+```
+Execute commands → Require 2-person verification for CRITICAL systems
+Admin changes → Require change management approval
+Emergency Override → Automatic logging + management notification
+```
+
+---
+
+## Attack Simulation Scenarios
+
+### Scenario 1: **Privilege Escalation via IT Access**
+```
+Attacker obtains: T8-PSE-IT-ADMIN-004 (Sarah Kim's token)
+Capability: ✅ Network admin, ❌ SCADA execution
+Attack Path: Modify authentication → Create fake SCADA-CHIEF token
+HIL Checkpoint: Detect unauthorized token creation
+```
+
+### Scenario 2: **Phishing SCADA Operator**
+```
+Target: T8-PSE-SCADA-OP-006 (Emily Nguyen)
+Capability: ✅ Control Wild Horse Sectors D-F
+Attack: Send malicious setpoint changes during peak load
+HIL Checkpoint: Detect unusual setpoint patterns
+```
+
+### Scenario 3: **Field Technician Token Theft**
+```
+Compromised: T8-PSE-FIELD-TECH-011 (Thomas Brown)
+Capability: ✅ Read-only remote, ✅ Physical on-site access
+Attack: Use physical access to install rogue RTU
+HIL Checkpoint: Detect new device on network
+```
+
+### Scenario 4: **Database Manipulation**
+```
+Attacker obtains: T8-PSE-IT-DBA-010 (Linda Martinez)
+Capability: ✅ Database admin, ❌ Device control
+Attack: Alter SCADA historian to hide malicious commands
+HIL Checkpoint: Detect database schema changes
+```
+
+---
+
+## Defensive Token Monitoring
+
+### **Anomaly Detection Rules**
+1. ✅ Token used from unusual geographic location
+2. ✅ Token used outside normal shift hours
+3. ✅ Rapid succession of high-privilege commands
+4. ✅ Token accessing systems outside normal scope
+5. ✅ Multiple failed authentication attempts
+6. ✅ Emergency override used without logged incident
+
+### **HIL Trigger Thresholds**
+```
+CRITICAL tokens: Any anomaly → Immediate HIL review
+HIGH tokens: 2+ anomalies in 1 hour → HIL review  
+MEDIUM/LOW tokens: 3+ anomalies in 24 hours → HIL review
+```
+
+---
+
+## Token Hierarchy and Delegation
+
+```
+CHIEF (PSE-001) 
+    ├─ SUPER (PSE-020) → Can delegate to OPs during shift
+    ├─ SR (PSE-002, PSE-003) → Can supervise OPs
+    │   ├─ OP (PSE-005, PSE-006)
+    │   └─ OP (PSE-007, PSE-008)
+    └─ IT-ADMIN (PSE-004) → Cannot delegate SCADA permissions
+        ├─ IT-SEC (PSE-009)
+        └─ IT-DBA (PSE-010)
+```
+
+**Delegation Rules:**
+- CHIEF can temporarily elevate SR to CHIEF for backup coverage
+- SUPER can grant temporary OP permissions during emergencies
+- IT roles CANNOT delegate or elevate to SCADA operational roles
+- All delegation requires logging and 2-person authorization
+
+---
+
+## Implementation Notes for Demo
+
+### Login Screen
+```javascript
+// Token format validation
+function validateToken(token) {
+  const pattern = /^T8-PSE-(SCADA|IT|FIELD|ENG|ANALYST)-(CHIEF|SR|SUPER|OP|ADMIN|SEC|DBA|PC|TECH|JR|MAINT)-\d{3}$/;
+  return pattern.test(token);
+}
+```
+
+### Permission Check
+```javascript
+function checkPermission(token, action, system) {
+  const tokenData = lookupToken(token);
+  
+  if (!tokenData.permissions[action]) {
+    logUnauthorizedAttempt(token, action, system);
+    return false;
+  }
+  
+  if (!tokenData.access_systems.includes(system)) {
+    logOutOfScopeAccess(token, system);
+    triggerHIL();
+    return false;
+  }
+  
+  return true;
+}
+```
+
+### HIL Alert Format
+```json
+{
+  "alert_id": "HIL-2025-1106-001",
+  "timestamp": "2025-11-06T14:32:15Z",
+  "token": "T8-PSE-SCADA-OP-006",
+  "employee": "Emily Nguyen",
+  "anomaly": "Unusual setpoint change detected",
+  "system": "Wild Horse Sector E",
+  "action_required": "Review and approve/deny command",
+  "risk_level": "MEDIUM"
+}
+```
