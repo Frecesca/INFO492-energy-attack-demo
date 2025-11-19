@@ -1,0 +1,577 @@
+{
+  "organization": "Puget Sound Energy (PSE)",
+  "data_generated": "2025-11-06",
+  "total_employees": 20,
+  "employees": [
+    {
+      "employee_id": "PSE-001",
+      "name": "David Chen",
+      "title": "Chief SCADA Engineer",
+      "department": "Grid Operations",
+      "location": "Bellevue Control Center",
+      "years_experience": 15,
+      "clearance_level": "CRITICAL",
+      "token": "T8-PSE-SCADA-CHIEF-001",
+      "direct_reports": ["PSE-002", "PSE-003", "PSE-004"],
+      "reports_to": "EXEC-001",
+      "devices_controlled": [
+        "Wild Horse Wind Farm SCADA",
+        "Hopkins Ridge Wind Farm SCADA", 
+        "All Substation RTUs",
+        "Master SCADA System",
+        "Backup Control Systems"
+      ],
+      "access_systems": [
+        "Siemens Spectrum Power 7",
+        "ABB MicroSCADA",
+        "GE e-terradistribution",
+        "Emergency Shutdown Systems"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": true,
+        "admin": true,
+        "emergency_override": true
+      }
+    },
+    {
+      "employee_id": "PSE-002",
+      "name": "Maria Rodriguez",
+      "title": "Senior SCADA Operator",
+      "department": "Grid Operations",
+      "location": "Bellevue Control Center",
+      "years_experience": 10,
+      "clearance_level": "CRITICAL",
+      "token": "T8-PSE-SCADA-SR-002",
+      "direct_reports": ["PSE-005", "PSE-006"],
+      "reports_to": "PSE-001",
+      "devices_controlled": [
+        "Wild Horse Wind Farm Turbines (149 units)",
+        "Substation Breakers (Zones 1-3)",
+        "Load Distribution Switches"
+      ],
+      "access_systems": [
+        "Siemens Spectrum Power 7",
+        "Real-Time Monitoring Dashboard",
+        "Turbine Control Interface"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": true,
+        "admin": false,
+        "emergency_override": true
+      }
+    },
+    {
+      "employee_id": "PSE-003",
+      "name": "James Patterson",
+      "title": "Senior SCADA Operator",
+      "department": "Grid Operations", 
+      "location": "Bellevue Control Center",
+      "years_experience": 12,
+      "clearance_level": "CRITICAL",
+      "token": "T8-PSE-SCADA-SR-003",
+      "direct_reports": ["PSE-007", "PSE-008"],
+      "reports_to": "PSE-001",
+      "devices_controlled": [
+        "Hopkins Ridge Wind Farm Turbines (83 units)",
+        "Substation Breakers (Zones 4-6)",
+        "Voltage Regulators"
+      ],
+      "access_systems": [
+        "Siemens Spectrum Power 7",
+        "Real-Time Monitoring Dashboard",
+        "Voltage Control Systems"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": true,
+        "admin": false,
+        "emergency_override": true
+      }
+    },
+    {
+      "employee_id": "PSE-004",
+      "name": "Sarah Kim",
+      "title": "SCADA Systems Administrator",
+      "department": "IT Infrastructure",
+      "location": "Bellevue Control Center",
+      "years_experience": 8,
+      "clearance_level": "HIGH",
+      "token": "T8-PSE-IT-ADMIN-004",
+      "direct_reports": ["PSE-009", "PSE-010"],
+      "reports_to": "PSE-001",
+      "devices_controlled": [
+        "SCADA Network Infrastructure",
+        "Authentication Servers",
+        "Backup Systems"
+      ],
+      "access_systems": [
+        "Active Directory",
+        "Network Management Tools",
+        "SCADA Database Servers",
+        "Firewall Management"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": false,
+        "admin": true,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-005",
+      "name": "Robert Taylor",
+      "title": "SCADA Operator",
+      "department": "Grid Operations",
+      "location": "Bellevue Control Center",
+      "years_experience": 5,
+      "clearance_level": "HIGH",
+      "token": "T8-PSE-SCADA-OP-005",
+      "direct_reports": [],
+      "reports_to": "PSE-002",
+      "devices_controlled": [
+        "Wild Horse Wind Farm Sectors A-C",
+        "Substation Breakers (Zone 1)",
+        "Load Monitoring Systems"
+      ],
+      "access_systems": [
+        "Siemens Spectrum Power 7 (Read/Write)",
+        "Shift Operations Dashboard"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": true,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-006",
+      "name": "Emily Nguyen",
+      "title": "SCADA Operator",
+      "department": "Grid Operations",
+      "location": "Bellevue Control Center",
+      "years_experience": 6,
+      "clearance_level": "HIGH",
+      "token": "T8-PSE-SCADA-OP-006",
+      "direct_reports": [],
+      "reports_to": "PSE-002",
+      "devices_controlled": [
+        "Wild Horse Wind Farm Sectors D-F",
+        "Substation Breakers (Zone 2-3)",
+        "Capacitor Banks"
+      ],
+      "access_systems": [
+        "Siemens Spectrum Power 7 (Read/Write)",
+        "Shift Operations Dashboard"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": true,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-007",
+      "name": "Michael Johnson",
+      "title": "SCADA Operator",
+      "department": "Grid Operations",
+      "location": "Bellevue Control Center",
+      "years_experience": 4,
+      "clearance_level": "HIGH",
+      "token": "T8-PSE-SCADA-OP-007",
+      "direct_reports": [],
+      "reports_to": "PSE-003",
+      "devices_controlled": [
+        "Hopkins Ridge Wind Farm Sectors A-D",
+        "Substation Breakers (Zone 4-5)",
+        "Transformer Load Tap Changers"
+      ],
+      "access_systems": [
+        "Siemens Spectrum Power 7 (Read/Write)",
+        "Shift Operations Dashboard"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": true,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-008",
+      "name": "Jessica Lee",
+      "title": "SCADA Operator",
+      "department": "Grid Operations",
+      "location": "Bellevue Control Center",
+      "years_experience": 7,
+      "clearance_level": "HIGH",
+      "token": "T8-PSE-SCADA-OP-008",
+      "direct_reports": [],
+      "reports_to": "PSE-003",
+      "devices_controlled": [
+        "Hopkins Ridge Wind Farm Sectors E-F",
+        "Substation Breakers (Zone 6)",
+        "Reactive Power Controllers"
+      ],
+      "access_systems": [
+        "Siemens Spectrum Power 7 (Read/Write)",
+        "Shift Operations Dashboard"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": true,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-009",
+      "name": "Andrew Wilson",
+      "title": "Network Security Engineer",
+      "department": "IT Infrastructure",
+      "location": "Bellevue Control Center",
+      "years_experience": 6,
+      "clearance_level": "HIGH",
+      "token": "T8-PSE-IT-SEC-009",
+      "direct_reports": [],
+      "reports_to": "PSE-004",
+      "devices_controlled": [
+        "IDS/IPS Systems",
+        "Security Information Event Management (SIEM)",
+        "Access Control Lists"
+      ],
+      "access_systems": [
+        "Firewall Configuration",
+        "VPN Management",
+        "Network Monitoring Tools",
+        "Security Audit Logs"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": false,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-010",
+      "name": "Linda Martinez",
+      "title": "Database Administrator",
+      "department": "IT Infrastructure",
+      "location": "Bellevue Control Center",
+      "years_experience": 9,
+      "clearance_level": "HIGH",
+      "token": "T8-PSE-IT-DBA-010",
+      "direct_reports": [],
+      "reports_to": "PSE-004",
+      "devices_controlled": [
+        "SCADA Historian Database",
+        "Real-Time Data Servers",
+        "Backup Storage Systems"
+      ],
+      "access_systems": [
+        "SQL Server Management",
+        "Oracle Database Admin",
+        "Data Replication Systems"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": false,
+        "admin": true,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-011",
+      "name": "Thomas Brown",
+      "title": "Field Substation Technician",
+      "department": "Field Operations",
+      "location": "Wild Horse Wind Farm",
+      "years_experience": 11,
+      "clearance_level": "MEDIUM",
+      "token": "T8-PSE-FIELD-TECH-011",
+      "direct_reports": ["PSE-015", "PSE-016"],
+      "reports_to": "PSE-002",
+      "devices_controlled": [
+        "Wild Horse Substation Equipment",
+        "On-site Protection Relays",
+        "Local HMI Terminals"
+      ],
+      "access_systems": [
+        "Local SCADA Terminal (Read-Only)",
+        "Maintenance Management System",
+        "Equipment Diagnostic Tools"
+      ],
+      "permissions": {
+        "read": true,
+        "write": false,
+        "execute": false,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-012",
+      "name": "Patricia Davis",
+      "title": "Field Substation Technician",
+      "department": "Field Operations",
+      "location": "Hopkins Ridge Wind Farm",
+      "years_experience": 9,
+      "clearance_level": "MEDIUM",
+      "token": "T8-PSE-FIELD-TECH-012",
+      "direct_reports": ["PSE-017", "PSE-018"],
+      "reports_to": "PSE-003",
+      "devices_controlled": [
+        "Hopkins Ridge Substation Equipment",
+        "On-site Protection Relays",
+        "Local HMI Terminals"
+      ],
+      "access_systems": [
+        "Local SCADA Terminal (Read-Only)",
+        "Maintenance Management System",
+        "Equipment Diagnostic Tools"
+      ],
+      "permissions": {
+        "read": true,
+        "write": false,
+        "execute": false,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-013",
+      "name": "Christopher Garcia",
+      "title": "Protection & Control Engineer",
+      "department": "Engineering",
+      "location": "Bellevue Engineering Office",
+      "years_experience": 13,
+      "clearance_level": "HIGH",
+      "token": "T8-PSE-ENG-PC-013",
+      "direct_reports": ["PSE-019"],
+      "reports_to": "PSE-001",
+      "devices_controlled": [
+        "Protection Relay Settings",
+        "Substation Automation Systems",
+        "Breaker Control Logic"
+      ],
+      "access_systems": [
+        "SEL Protection Relay Programming",
+        "Substation Configuration Tools",
+        "Testing & Commissioning Systems"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": false,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-014",
+      "name": "Jennifer White",
+      "title": "Renewable Energy Analyst",
+      "department": "Grid Operations",
+      "location": "Bellevue Control Center",
+      "years_experience": 5,
+      "clearance_level": "MEDIUM",
+      "token": "T8-PSE-ANALYST-014",
+      "direct_reports": [],
+      "reports_to": "PSE-002",
+      "devices_controlled": [
+        "Wind Forecast Systems",
+        "Generation Scheduling Tools"
+      ],
+      "access_systems": [
+        "SCADA Dashboard (Read-Only)",
+        "Weather Forecasting Systems",
+        "Power Generation Analytics"
+      ],
+      "permissions": {
+        "read": true,
+        "write": false,
+        "execute": false,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-015",
+      "name": "Daniel Moore",
+      "title": "Wind Turbine Technician",
+      "department": "Field Operations",
+      "location": "Wild Horse Wind Farm",
+      "years_experience": 4,
+      "clearance_level": "LOW",
+      "token": "T8-PSE-FIELD-MAINT-015",
+      "direct_reports": [],
+      "reports_to": "PSE-011",
+      "devices_controlled": [
+        "Individual Turbine Control Panels",
+        "Turbine Safety Systems"
+      ],
+      "access_systems": [
+        "Turbine HMI (Local Only)",
+        "Maintenance Logs System"
+      ],
+      "permissions": {
+        "read": true,
+        "write": false,
+        "execute": false,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-016",
+      "name": "Nancy Thompson",
+      "title": "Wind Turbine Technician",
+      "department": "Field Operations",
+      "location": "Wild Horse Wind Farm",
+      "years_experience": 3,
+      "clearance_level": "LOW",
+      "token": "T8-PSE-FIELD-MAINT-016",
+      "direct_reports": [],
+      "reports_to": "PSE-011",
+      "devices_controlled": [
+        "Individual Turbine Control Panels",
+        "Turbine Safety Systems"
+      ],
+      "access_systems": [
+        "Turbine HMI (Local Only)",
+        "Maintenance Logs System"
+      ],
+      "permissions": {
+        "read": true,
+        "write": false,
+        "execute": false,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-017",
+      "name": "Kevin Anderson",
+      "title": "Wind Turbine Technician",
+      "department": "Field Operations",
+      "location": "Hopkins Ridge Wind Farm",
+      "years_experience": 5,
+      "clearance_level": "LOW",
+      "token": "T8-PSE-FIELD-MAINT-017",
+      "direct_reports": [],
+      "reports_to": "PSE-012",
+      "devices_controlled": [
+        "Individual Turbine Control Panels",
+        "Turbine Safety Systems"
+      ],
+      "access_systems": [
+        "Turbine HMI (Local Only)",
+        "Maintenance Logs System"
+      ],
+      "permissions": {
+        "read": true,
+        "write": false,
+        "execute": false,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-018",
+      "name": "Karen Thomas",
+      "title": "Wind Turbine Technician",
+      "department": "Field Operations",
+      "location": "Hopkins Ridge Wind Farm",
+      "years_experience": 6,
+      "clearance_level": "LOW",
+      "token": "T8-PSE-FIELD-MAINT-018",
+      "direct_reports": [],
+      "reports_to": "PSE-012",
+      "devices_controlled": [
+        "Individual Turbine Control Panels",
+        "Turbine Safety Systems"
+      ],
+      "access_systems": [
+        "Turbine HMI (Local Only)",
+        "Maintenance Logs System"
+      ],
+      "permissions": {
+        "read": true,
+        "write": false,
+        "execute": false,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-019",
+      "name": "Steven Jackson",
+      "title": "Junior Protection Engineer",
+      "department": "Engineering",
+      "location": "Bellevue Engineering Office",
+      "years_experience": 2,
+      "clearance_level": "MEDIUM",
+      "token": "T8-PSE-ENG-JR-019",
+      "direct_reports": [],
+      "reports_to": "PSE-013",
+      "devices_controlled": [
+        "Protection Relay Testing Equipment",
+        "Simulation Tools"
+      ],
+      "access_systems": [
+        "SCADA Dashboard (Read-Only)",
+        "Protection Relay Programming (Supervised)"
+      ],
+      "permissions": {
+        "read": true,
+        "write": false,
+        "execute": false,
+        "admin": false,
+        "emergency_override": false
+      }
+    },
+    {
+      "employee_id": "PSE-020",
+      "name": "Laura Martinez",
+      "title": "Operations Shift Supervisor",
+      "department": "Grid Operations",
+      "location": "Bellevue Control Center",
+      "years_experience": 14,
+      "clearance_level": "CRITICAL",
+      "token": "T8-PSE-SCADA-SUPER-020",
+      "direct_reports": ["PSE-005", "PSE-006", "PSE-007", "PSE-008"],
+      "reports_to": "PSE-001",
+      "devices_controlled": [
+        "All Grid Operations During Shift",
+        "Emergency Response Systems",
+        "Load Shedding Controls"
+      ],
+      "access_systems": [
+        "Siemens Spectrum Power 7",
+        "Emergency Management System",
+        "Shift Supervisor Override Console"
+      ],
+      "permissions": {
+        "read": true,
+        "write": true,
+        "execute": true,
+        "admin": false,
+        "emergency_override": true
+      }
+    }
+  ]
+}
